@@ -1,0 +1,7 @@
+{
+  "name": "mySkripsi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
