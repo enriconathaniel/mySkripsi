@@ -14,6 +14,13 @@ import { QuestAtletPage } from '../pages/quest-atlet/quest-atlet';
 import { HistoryAtletPage } from '../pages/history-atlet/history-atlet';
 import { LeaderboardAtletPage } from '../pages/leaderboard-atlet/leaderboard-atlet';
 import { RewardAtletPage } from '../pages/reward-atlet/reward-atlet';
+import { AddQuestPelatihPage } from '../pages/add-quest-pelatih/add-quest-pelatih';
+import { MainQuestPelatihPage } from '../pages/main-quest-pelatih/main-quest-pelatih';
+import { SideQuestPelatihPage } from '../pages/side-quest-pelatih/side-quest-pelatih';
+import { AddTaskPage } from '../pages/add-task/add-task';
+import { CreateTaskPage } from '../pages/create-task/create-task';
+import { AddRewardPage } from '../pages/add-reward/add-reward';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,15 @@ import { RewardAtletPage } from '../pages/reward-atlet/reward-atlet';
     QuestAtletPage,
     HistoryAtletPage,
     LeaderboardAtletPage,
-    RewardAtletPage
+    RewardAtletPage,
+    AddQuestPelatihPage,
+    MainQuestPelatihPage,
+    SideQuestPelatihPage,
+    AddTaskPage,
+    CreateTaskPage,
+    AddRewardPage,
+    ChangePasswordPage
+    
   ],
   imports: [
     BrowserModule,
@@ -43,7 +58,14 @@ import { RewardAtletPage } from '../pages/reward-atlet/reward-atlet';
     QuestAtletPage,
     HistoryAtletPage,
     LeaderboardAtletPage,
-    RewardAtletPage
+    RewardAtletPage,
+    AddQuestPelatihPage,
+    MainQuestPelatihPage,
+    SideQuestPelatihPage,
+    AddTaskPage,
+    CreateTaskPage,
+    AddRewardPage,
+    ChangePasswordPage
   ],
   providers: [
     StatusBar,
