@@ -14,5 +14,40 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label stacked>Deskripsi</ion-label>
+    <ion-textarea ></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>Tipe Quest</ion-label>
+    <ion-select [(ngModel)]="gender">
+      <ion-option value="f">Side Quest</ion-option>
+      <ion-option value="m">Main Quest</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Point</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Max Umur</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Min Exp</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>  
+  <ion-item>
+    <ion-label>Max Exp</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Repetition</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item >
+    <button ion-button color="primary" block>Submit</button>
+    <br>
+    <button ion-button color="danger" block>Back</button>
+  </ion-item>
 </ion-content>

@@ -14,5 +14,27 @@
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-label>Nama Gaya</ion-label>
+    <ion-select [(ngModel)]="gaya">
+      <ion-option value="dada">Dada</ion-option>
+      <ion-option value="bebas">Bebas</ion-option>
+      <ion-option value="punggung">Punggung</ion-option>
+      <ion-option value="kupu">Kupu-Kupu</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jarak</ion-label>
+    <ion-select [(ngModel)]="jarak">
+      <ion-option value="50">50</ion-option>
+      <ion-option value="100">100</ion-option>
+      <ion-option value="200">200</ion-option>
+      <ion-option value="400">400</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Waktu</ion-label>
+    <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH:mm:ss" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
 
 </ion-content>
