@@ -7,12 +7,52 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>AddTask</ion-title>
+    <ion-title>Add Task</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Nama Gaya</ion-label>
+    <ion-select [(ngModel)]="gaya">
+      <ion-option value="dada">Dada</ion-option>
+      <ion-option value="bebas">Bebas</ion-option>
+      <ion-option value="punggung">Punggung</ion-option>
+      <ion-option value="kupu">Kupu-Kupu</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Jarak</ion-label>
+    <ion-select [(ngModel)]="jarak">
+      <ion-option value="50">50</ion-option>
+      <ion-option value="100">100</ion-option>
+      <ion-option value="200">200</ion-option>
+      <ion-option value="400">400</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <div class="row header">
+      <div class="col">Nama</div>
+      <div class="col">Status</div>
+    </div>
+    <div class="row">
+      <div class="col">User</div>
+      <div class="col">Stat</div>
+    </div>
+    <div class="row">
+      <div class="col">User</div>
+      <div class="col">Stat</div>
+    </div>
+    <div class="row">
+      <div class="col">User</div>
+      <div class="col">Stat</div>
+    </div>
+  </ion-item>
+  <ion-item >
+    <button ion-button color="primary" block>Submit</button>
+    <br>
+    <button ion-button color="danger" block>Back</button>
+  </ion-item>
 </ion-content>

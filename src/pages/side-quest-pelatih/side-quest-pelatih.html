@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>SideQuestPelatih</ion-title>
+    <ion-title>Side Quest</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,12 +15,24 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label>Nama Gaya</ion-label>
-    <ion-select [(ngModel)]="gaya">
-      <ion-option value="dada">Dada</ion-option>
-      <ion-option value="bebas">Bebas</ion-option>
-      <ion-option value="punggung">Punggung</ion-option>
-      <ion-option value="kupu">Kupu-Kupu</ion-option>
+    <ion-label>Category</ion-label>
+    <ion-select [(ngModel)]="category">
+      <ion-option value="level">Level</ion-option>
+      <ion-option value="points">Points</ion-option>
+      <ion-option value="login">Login</ion-option>
     </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Level</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Points</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-item >
+    <button ion-button color="primary" block>Submit</button>
+    <br>
+    <button ion-button color="danger" block>Back</button>
   </ion-item>
 </ion-content>
