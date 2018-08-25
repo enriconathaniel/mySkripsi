@@ -14,7 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'add-task.html',
 })
 export class AddTaskPage {
-
+  sausage: boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

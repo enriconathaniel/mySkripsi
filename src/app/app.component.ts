@@ -24,7 +24,7 @@ import { ChangePasswordPage } from '../pages/change-password/change-password';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = QuestAtletPage;
+  rootPage:any = AddTaskPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
