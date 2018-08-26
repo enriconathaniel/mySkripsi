@@ -21,12 +21,14 @@ import { AddTaskPage } from '../pages/add-task/add-task';
 import { CreateTaskPage } from '../pages/create-task/create-task';
 import { AddRewardPage } from '../pages/add-reward/add-reward';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
+import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginAtletPage,
+    LoginPelatihPage,
     MenuAtletPage,
     ProfilAtletPage,
     ClubPage,
@@ -52,6 +54,7 @@ import { ChangePasswordPage } from '../pages/change-password/change-password';
     MyApp,
     HomePage,
     LoginAtletPage,
+    LoginPelatihPage,
     MenuAtletPage,
     ProfilAtletPage,
     ClubPage,

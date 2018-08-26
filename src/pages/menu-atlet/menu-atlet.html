@@ -16,22 +16,22 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <button ion-button color="primary" block>Profile</button>
+      <button ion-button color="primary" [navPush]="profilePage" block>Profile</button>
     </ion-item>
     <ion-item>
-      <button ion-button color="primary" block>Club</button>
+      <button ion-button color="primary" [navPush]="clubPage" block>Club</button>
     </ion-item>
     <ion-item>
-      <button ion-button color="primary" block>Quest</button>
+      <button ion-button color="primary" [navPush]="questPage" block>Quest</button>
     </ion-item>
     <ion-item>
-      <button ion-button color="primary" block>History</button>
+      <button ion-button color="primary" [navPush]="historyPage" block>History</button>
     </ion-item>
     <ion-item>
-      <button ion-button color="primary" block>Leaderboard</button>
+      <button ion-button color="primary" [navPush]="leaderboardPage" block>Leaderboard</button>
     </ion-item>
     <ion-item>
-      <button ion-button color="primary" block>Reward</button>
+      <button ion-button color="primary" [navPush]="rewardPage" block>Reward</button>
     </ion-item>
   </ion-list>
 </ion-content>

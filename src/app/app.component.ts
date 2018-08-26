@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginAtletPage } from '../pages/login-atlet/login-atlet';
+
 import { MenuAtletPage } from '../pages/menu-atlet/menu-atlet';
 import { ProfilAtletPage } from '../pages/profil-atlet/profil-atlet';
 import { ClubPage } from '../pages/club/club';
@@ -19,12 +20,13 @@ import { AddTaskPage } from '../pages/add-task/add-task';
 import { CreateTaskPage } from '../pages/create-task/create-task';
 import { AddRewardPage } from '../pages/add-reward/add-reward';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
+import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = AddTaskPage;
+  rootPage:any = LoginPelatihPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
