@@ -14,5 +14,12 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <button ion-button color="primary" [navPush]="changePassword" block>Change Password</button>
+    </ion-item>
+    <ion-item>
+      <button ion-button color="primary" block navPop>Back</button>
+    </ion-item>
+  </ion-list>
 </ion-content>

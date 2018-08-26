@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginAtletPage } from '../pages/login-atlet/login-atlet';
-
 import { MenuAtletPage } from '../pages/menu-atlet/menu-atlet';
 import { ProfilAtletPage } from '../pages/profil-atlet/profil-atlet';
 import { ClubPage } from '../pages/club/club';
@@ -26,7 +25,7 @@ import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPelatihPage;
+  rootPage:any = MenuAtletPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
