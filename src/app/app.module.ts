@@ -22,6 +22,8 @@ import { CreateTaskPage } from '../pages/create-task/create-task';
 import { AddRewardPage } from '../pages/add-reward/add-reward';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
+import { WebService } from '../service/WebService';
+import { SQLite } from '../../node_modules/@ionic-native/sqlite';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,12 @@ import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
   providers: [
     StatusBar,
     SplashScreen,
+    //AuthService,
+    WebService,
+    //DatabaseService,
+    //SettingsService,
+    SQLite,
+    //OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
