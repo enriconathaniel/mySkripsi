@@ -23,7 +23,7 @@ import { AddRewardPage } from '../pages/add-reward/add-reward';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
 import { WebService } from '../service/WebService';
-import { SQLite } from '../../node_modules/@ionic-native/sqlite';
+//import { SQLite } from '../../node_modules/@ionic-native/sqlite';
 import { Http } from '../../node_modules/@angular/http';
 import { HttpModule } from '@angular/http';
 
@@ -83,7 +83,7 @@ import { HttpModule } from '@angular/http';
     WebService,
     //DatabaseService,
     //SettingsService,
-    SQLite,
+    //SQLite,
     HttpModule,
     //OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

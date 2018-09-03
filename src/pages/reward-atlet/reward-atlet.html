@@ -14,5 +14,15 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngFor="let list of rewardlist">
+      <img width="80" src="assets/gambar/{{list.gambar}}"/>
+      <ion-card-content>
+        <ion-card-title>
+            {{list.nama}}
+          </ion-card-title>
+        <p>
+            {{list.harga}}
+        </p>
+      </ion-card-content>
+    </ion-card>
 </ion-content>
