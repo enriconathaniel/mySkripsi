@@ -24,6 +24,8 @@ import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
 import { WebService } from '../service/WebService';
 import { SQLite } from '../../node_modules/@ionic-native/sqlite';
+import { Http } from '../../node_modules/@angular/http';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { SQLite } from '../../node_modules/@ionic-native/sqlite';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -75,11 +78,13 @@ import { SQLite } from '../../node_modules/@ionic-native/sqlite';
   providers: [
     StatusBar,
     SplashScreen,
+    // Http,
     //AuthService,
     WebService,
     //DatabaseService,
     //SettingsService,
     SQLite,
+    HttpModule,
     //OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
