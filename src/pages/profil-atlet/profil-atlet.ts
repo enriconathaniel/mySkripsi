@@ -38,7 +38,7 @@ export class ProfilAtletPage {
   ion
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilAtletPage');
-    this.webService.get(this.webService.url + "getgayarenang.php", null).subscribe(response => {
+    this.webService.get(this.webService.url + "getprofile.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
       if(responseData){

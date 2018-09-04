@@ -26,6 +26,7 @@ import { WebService } from '../service/WebService';
 //import { SQLite } from '../../node_modules/@ionic-native/sqlite';
 import { Http } from '../../node_modules/@angular/http';
 import { HttpModule } from '@angular/http';
+import { RegisterPage } from '../pages/register/register';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { HttpModule } from '@angular/http';
     AddTaskPage,
     CreateTaskPage,
     AddRewardPage,
-    ChangePasswordPage
+    ChangePasswordPage,
+    RegisterPage
     
   ],
   imports: [
@@ -73,7 +75,8 @@ import { HttpModule } from '@angular/http';
     AddTaskPage,
     CreateTaskPage,
     AddRewardPage,
-    ChangePasswordPage
+    ChangePasswordPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

@@ -15,15 +15,30 @@
 
 <ion-content padding>
     <ion-card *ngFor="let list of infoclub">
-      <img src="assets/imgs/piranha.png"/>
-      <ion-card-content>
-        <ion-card-title>
-          Piranha Tegal
-        </ion-card-title>
-        <p>
-          {{list.clubinfo}}
-        </p>
-      </ion-card-content>
+
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+
+            <img src="assets/imgs/piranha.png"/>
+
+          </ion-col>
+          <ion-col col-8>
+    
+            <ion-card-content>
+              <ion-card-title>
+                Piranha Tegal
+              </ion-card-title>
+              <p>
+                {{list.clubinfo}}
+              </p>
+            </ion-card-content>
+    
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
     </ion-card>
 
 </ion-content>
