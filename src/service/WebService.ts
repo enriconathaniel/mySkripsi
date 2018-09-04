@@ -3,7 +3,7 @@ import { Http, Response, ResponseContentType, Headers, RequestOptions } from '@a
 
 @Injectable()
 export class WebService {
-    url = 'http://localhost:1234/api_skripsi/';
+    url = 'http://localhost:8080/api_skripsi/';
     //url = 'http://umnspa.janssenrahardja.xyz/umnspa/';
     
     

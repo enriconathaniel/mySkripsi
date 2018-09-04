@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-card *ngFor="let list of rewardlist">
-      <img width="80" src="assets/gambar/{{list.gambar}}"/>
+      <img width="20" src="assets/gambar/{{list.gambar}}"/>
       <ion-card-content>
         <ion-card-title>
             {{list.nama}}
@@ -23,6 +23,14 @@
         <p>
             {{list.harga}}
         </p>
+
+        <ion-item>
+          <button ion-button icon-start clear item-end>
+            <ion-icon name="cart"></ion-icon>
+            Buy
+          </button>
+        </ion-item>
+
       </ion-card-content>
     </ion-card>
 </ion-content>
