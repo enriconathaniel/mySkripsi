@@ -3,7 +3,9 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
+import { File } from '@ionic-native/file';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginAtletPage } from '../pages/login-atlet/login-atlet';
@@ -24,9 +26,12 @@ import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
 import { WebService } from '../service/WebService';
 //import { SQLite } from '../../node_modules/@ionic-native/sqlite';
+// import { FormsModule } from '@angular/forms';
+
 import { Http } from '../../node_modules/@angular/http';
 import { HttpModule } from '@angular/http';
 import { RegisterPage } from '../pages/register/register';
+import { AuthService } from '../service/AuthService';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,8 @@ import { RegisterPage } from '../pages/register/register';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    // FormsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -82,12 +88,16 @@ import { RegisterPage } from '../pages/register/register';
     StatusBar,
     SplashScreen,
     // Http,
-    //AuthService,
+    AuthService,
     WebService,
     //DatabaseService,
     //SettingsService,
     //SQLite,
     HttpModule,
+    FileTransfer,
+    //FileUploadOptions,
+    //FileTransferObject,
+    File,
     //OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -20,12 +20,13 @@ import { CreateTaskPage } from '../pages/create-task/create-task';
 import { AddRewardPage } from '../pages/add-reward/add-reward';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { LoginPelatihPage } from '../pages/login-pelatih/login-pelatih';
+import { RegisterPage } from '../pages/register/register';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = MenuAtletPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

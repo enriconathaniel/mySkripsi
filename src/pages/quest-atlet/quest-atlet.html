@@ -8,15 +8,32 @@
 
   <ion-navbar>
     <ion-title>Quest</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="addQuestPage">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-tabs>
-    <ion-tab [root]="tab1Root">Test</ion-tab>
-    <ion-tab [root]="tab2Root">Test2</ion-tab>
-  </ion-tabs>
-
+  <ion-card *ngFor="let list of questlist">
+    <ion-item>
+      {{list.deskripsi}}
+    </ion-item>
+    <ion-row>
+      <ion-col>
+          {{list.point}}
+      </ion-col>
+      <ion-col>
+          {{list.max_exp}}
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-item>
+      <button ion-button color="primary" block navPop>Back</button>
+  </ion-item>
 </ion-content>

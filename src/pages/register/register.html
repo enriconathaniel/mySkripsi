@@ -7,12 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+      <ion-datetime placeholder="Tanggal Lahir" displayFormat="DD/MM/YYYY" pickerFormat="D MMM YYYY" formControlName="tanggallahir"></ion-datetime>
+      <ion-input  type="text" formControlName="nama" placeholder="Nama"></ion-input>
+      <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+      <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+      <ion-input type="password" formControlName="confirm_password" placeholder="Confirm Password"></ion-input>
 
+      <button ion-button type="submit" block [disabled]="!RegisterForm.valid">Sign Up</button>
+  </form>
 </ion-content>

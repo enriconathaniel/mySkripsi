@@ -8,6 +8,13 @@
 
   <ion-navbar>
     <ion-title>Reward</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="addreward">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -33,4 +40,7 @@
 
       </ion-card-content>
     </ion-card>
+    <ion-item>
+      <button ion-button color="primary" block navPop>Back</button>
+    </ion-item>
 </ion-content>
