@@ -41,6 +41,20 @@
       <ion-label>Repetition</ion-label>
       <ion-input type="number" formControlName="repetition"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Gaya Renang</ion-label>
+      <ion-select formControlName="gaya">
+        <ion-option value="{{list.id}}" *ngFor="let list of selectgaya">{{list.jarak}} m {{list.nama_gaya}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-datetime 
+        placeholder="Waktu Target" 
+        displayFormat="HH mm ss" 
+        pickerFormat="HH mm ss" 
+        formControlName="waktu_target">
+      </ion-datetime>
+    </ion-item>
     <ion-item >
       <button ion-button color="primary" block>Submit</button>
       <br>

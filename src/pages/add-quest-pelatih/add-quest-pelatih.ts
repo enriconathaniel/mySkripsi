@@ -18,6 +18,7 @@ import { QuestAtletPage } from '../quest-atlet/quest-atlet';
 })
 export class AddQuestPelatihPage {
   addquestForm:any;
+  selectgaya:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       private builder: FormBuilder, private webService : WebService) {
@@ -25,6 +26,18 @@ export class AddQuestPelatihPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddQuestPelatihPage');
+
+    this.webService.get(this.webService.url + "getgayarenang.php", null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+      if(responseData){
+        console.log(JSON.stringify(responseData))
+        
+        this.selectgaya = responseData;
+        //console.log(this.classInfo);
+      }
+    }, error =>{
+    })
   }
 
   ngOnInit(){
@@ -39,6 +52,8 @@ export class AddQuestPelatihPage {
       min_exp: ['', Validators.required],
       max_exp: ['', Validators.required],
       repetition: ['', Validators.required],
+      gaya: ['', Validators.required],
+      waktu_target: ['', Validators.required]
       
     });
   }
@@ -51,7 +66,9 @@ export class AddQuestPelatihPage {
       "max_umur" : thisForm.max_umur,
       "min_exp" : thisForm.min_exp,
       "max_exp" : thisForm.max_exp,
-      "repetition" : thisForm.repetition
+      "repetition" : thisForm.repetition,
+      "id_gaya" : thisForm.gaya,
+      "waktu_target" : thisForm.waktu_target
     }
     console.log(req)
     this.webService.post("http://localhost:8080/api_skripsi/add_quest.php", JSON.stringify(req), null).subscribe(response => {

@@ -21,9 +21,14 @@
 
 <ion-content padding>
   <ion-card *ngFor="let list of questlist">
-    <ion-item>
-      {{list.deskripsi}}
-    </ion-item>
+    <ion-row>
+      <ion-col>
+          {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
+      </ion-col>
+      <ion-col>
+          {{list.quest_waktu_target}}
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col>
           {{list.point}}

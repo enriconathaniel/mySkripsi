@@ -94,10 +94,10 @@ import { AuthService } from '../service/AuthService';
     //SettingsService,
     //SQLite,
     HttpModule,
-    FileTransfer,
+    //FileTransfer,
     //FileUploadOptions,
     //FileTransferObject,
-    File,
+    //File,
     //OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
