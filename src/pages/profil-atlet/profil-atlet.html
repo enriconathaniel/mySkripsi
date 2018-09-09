@@ -51,7 +51,7 @@
       <button ion-button color="primary" [navPush]="changePassword" block>Change Password</button>
     </ion-item>
     <ion-item>
-      <button ion-button color="primary" block navPop>Back</button>
+      <button ion-button color="primary" block (click)="logout()">Log Out</button>
     </ion-item>
   </ion-list>
 </ion-content>

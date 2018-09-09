@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { ChangePasswordPage } from '../change-password/change-password';
 import { Http, HttpModule } from '@angular/http';
 import { WebService } from '../../service/WebService';
+import { AuthService } from '../../service/AuthService';
+import { HomePage } from '../home/home';
 /**
  * Generated class for the ProfilAtletPage page.
  *
@@ -26,8 +28,8 @@ export class ProfilAtletPage {
   
   // };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http
-  ,public webService: WebService) {
+  constructor(public navCtrl: NavController, private app:App, public navParams: NavParams, public http: Http
+  ,public webService: WebService, public AuthService: AuthService) {
     this.changePassword = ChangePasswordPage;
 
     // this.http.get('https://www.reddit.com/r/gifs/new/.json?limit=10').map(res => res.json()).subscribe(data => {
@@ -49,6 +51,14 @@ export class ProfilAtletPage {
       }
     }, error =>{
     })
+  }
+
+
+  logout(){
+    this.AuthService.logout(() => {
+      //set root
+      this.app.getRootNav().setRoot(HomePage);
+  });
   }
 
 }

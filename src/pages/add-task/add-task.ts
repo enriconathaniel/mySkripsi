@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WebService } from '../../service/WebService';
-import { FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, Validators, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { HistoryAtletPage } from '../history-atlet/history-atlet';
 
 /**
@@ -17,7 +17,7 @@ import { HistoryAtletPage } from '../history-atlet/history-atlet';
   templateUrl: 'add-task.html',
 })
 export class AddTaskPage {
-  addtaskForm:any;
+  addtaskForm:FormGroup;
   selectgaya:any;
   userlist:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -43,9 +43,12 @@ export class AddTaskPage {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
       if(responseData){
-        console.log(JSON.stringify(responseData))
+        // console.log(JSON.stringify(responseData),'ASaas')
         
-        this.userlist = responseData;
+        this.userlist = responseData.map(function(element){
+          element.isChecked = false;
+          return element;
+        });
         //console.log(this.classInfo);
       }
     }, error =>{
@@ -73,6 +76,7 @@ export class AddTaskPage {
 
   onSubmit(){
     let thisForm = this.addtaskForm.value;
+    console.log(thisForm);
     let req = {
       "deskripsi" : thisForm.deskripsi,
       "point" : thisForm.point,

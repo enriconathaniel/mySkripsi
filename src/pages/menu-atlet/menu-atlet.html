@@ -13,8 +13,8 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
+<ion-content padding center>
+  <!-- <ion-list>
     <ion-item>
       <button ion-button color="primary" [navPush]="profilePage" block>Profile</button>
     </ion-item>
@@ -33,5 +33,77 @@
     <ion-item>
       <button ion-button color="primary" [navPush]="rewardPage" block>Reward</button>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+
+  <ion-grid center style="vertical-align: center">
+  
+    <!-- <ion-row>
+    
+      <ion-col>
+        <button ion-button color="primary" [navPush]="profilePage" block>Profile</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary" [navPush]="clubPage" block>Club</button>
+      </ion-col>
+    
+    </ion-row>
+    
+    <ion-row>
+    
+      <ion-col>
+        <button ion-button color="primary" [navPush]="questPage" block>Quest</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary" [navPush]="historyPage" block>History</button>
+      </ion-col>
+    
+    </ion-row>
+    
+    <ion-row>
+    
+      <ion-col>
+        <button ion-button color="primary" [navPush]="leaderboardPage" block>Leaderboard</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary" [navPush]="rewardPage" block>Reward</button>
+      </ion-col>
+    
+    </ion-row> -->
+  
+
+    <ion-row>
+  
+      <ion-col center text-center>
+      <ion-icon name="man" style="zoom:3.0;" [navPush]="profilePage"></ion-icon>
+      </ion-col>
+      <ion-col center text-center>
+      <ion-icon name="contacts" style="zoom:3.0;" [navPush]="clubPage"></ion-icon>
+      </ion-col>
+    
+    </ion-row>
+    
+    <ion-row>
+    
+      <ion-col center text-center>
+        <ion-icon name="list-box" style="zoom:3.0;" [navPush]="questPage"></ion-icon>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-icon name="clipboard" style="zoom:3.0;" [navPush]="historyPage"></ion-icon>
+      </ion-col>
+    
+    </ion-row>
+    
+    <ion-row>
+    
+      <ion-col center text-center>
+        <ion-icon name="heart" style="zoom:3.0;" [navPush]="leaderboardPage"></ion-icon>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-icon name="trophy" style="zoom:3.0;" [navPush]="rewardPage"></ion-icon>
+      </ion-col>
+    
+    </ion-row>
+  
+  </ion-grid>
+
 </ion-content>

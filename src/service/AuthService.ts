@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { WebService } from './WebService';
 import { Headers } from '@angular/http';
-// import { DatabaseService } from './DBService';
 import { AlertController } from 'ionic-angular';
-// import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class AuthService{
@@ -13,13 +12,12 @@ export class AuthService{
     nim: any;
     notification: "";
 
-    constructor(private webSvc:WebService, 
-        // private dbSvc:DatabaseService, 
+    constructor(private webSvc:WebService,
         private alertCtrl: AlertController,
-        //  private storage: Storage,
+         private storage: Storage,
         private webService: WebService){}
 
-    login(email:string, password:string, onSuccess:Function){
+    login(email:string, password:string, onSuccess:Function, onFailed: Function){
         //let url = "http://delthraze.esy.es/Boopang/API/sign_in.php";
         //let url = "http://localhost/umnspa/login.php";
         let url = this.webService.url + "login.php";
@@ -36,96 +34,41 @@ export class AuthService{
         .subscribe(response => {
             console.log(response,'hhS');
             if(response == null){
+                onFailed("NO_CONNECTION");
             }
             else{
                 console.log(response["_body"]);
                 let responseData:any = JSON.parse(response["_body"]);
                 //console.log(JSON.stringify(responseData));
                 if(responseData == null){
-                    this.presentAlert();
+                    onFailed();
                 }
                 else if(responseData['success'] == true){
-                    //masukin ke var
-                    //set session masukin ke storaage
-                    //jalanin onSuccess
-
-                    // this.nim = responseData['nim']
-                    // this.email = email;
-           
-            
-                    // const session = {
-                    //     nim: this.nim,
-                    //     email: this.email,
-                    //     id_moodle: this.id_moodle,
-                    //     notification: this.notification
-                    // }
-                    // this.storage.set('sessions', session);
-                    // onSuccess();
-                }
-                else{
-                    this.presentAlert();
-                }
-            }
-        }, error => {
-
-        });
-    }
-
-    logout(onSuccess:Function){
-        let url = this.webService.url + "logout.php";
-
-        let requestData = {
-            "nim" : this.nim
-        };
-
-        console.log(this.nim);
-
-        let header = new Headers({
-            'Content-Type': 'application/json'
-        });
-
-        this.webSvc.post(url, JSON.stringify(requestData), header)
-        .subscribe(response => {
-            console.log(response["_body"]);
-            if(response == null){
-                console.log('asd');
-            }
-            else{
-                let responseData:any = JSON.parse(response["_body"]);
-                //console.log(JSON.stringify(responseData));
-                if(responseData == null){
-                    //this.presentAlert();
-                }
-                else if(responseData['success'] == true){
-                    this.email = "";
-                    this.nim = "";
-                    this.id_moodle = "";
-                    this.token_onesignal = "";
-
                     const session = {
-                        nim: this.nim,
-                        email: this.email,
-                        id_moodle: this.id_moodle
+                        id: responseData['id']
                     }
-                   // this.storage.set('sessions', session);
+                    this.storage.set('sessions', session);
                     onSuccess();
                 }
                 else{
-                    // this.presentAlert();
-                    console.log('gagal keluar');
+                    onFailed("INVALID_LOGIN_DATA");
                 }
             }
         }, error => {
+            onFailed();
         });
+    }
+    
+    logout(onSuccess:Function){
+        const session = {
+            id: ''
+        }
+        this.storage.set('sessions', session);
+        onSuccess();
     }
 
     presentAlert2() {
-        let alert = this.alertCtrl.create({
-            //title: 'Invalid E-mail or Password',
-            subTitle: 'Invalid E-mail or Password',
-            buttons: ['Dismiss']
-        });
-        alert.present();
+        
     }
 
     presentAlert(){

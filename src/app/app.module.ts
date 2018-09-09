@@ -32,6 +32,7 @@ import { Http } from '../../node_modules/@angular/http';
 import { HttpModule } from '@angular/http';
 import { RegisterPage } from '../pages/register/register';
 import { AuthService } from '../service/AuthService';
+import { IonicStorageModule } from '../../node_modules/@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { AuthService } from '../service/AuthService';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+    IonicStorageModule.forRoot()
     // FormsModule,
   ],
   bootstrap: [IonicApp],
