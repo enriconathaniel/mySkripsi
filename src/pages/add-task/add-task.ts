@@ -39,7 +39,7 @@ export class AddTaskPage {
     }, error =>{
     })
 
-    this.webService.get(this.webService.url + "getprofile.php", null).subscribe(response => {
+    this.webService.get(this.webService.url + "getatletlist.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
       if(responseData){

@@ -7,9 +7,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class AuthService{
     email = "";
-    id_moodle = "";
-    token_onesignal = "";
-    nim: any;
+    id: any;
     notification: "";
 
     constructor(private webSvc:WebService,
@@ -44,6 +42,7 @@ export class AuthService{
                     onFailed();
                 }
                 else if(responseData['success'] == true){
+                    this.id = responseData['id'];
                     const session = {
                         id: responseData['id']
                     }

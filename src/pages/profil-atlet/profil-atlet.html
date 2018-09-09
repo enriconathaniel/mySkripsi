@@ -16,7 +16,7 @@
 <ion-content padding>
   
   <ion-list>
-    <ion-card *ngFor="let post of infoprofile">
+    <ion-card>
       
       <ion-grid>
         <ion-row>
@@ -29,11 +29,11 @@
 
             <ion-card-content>
             <ion-card-title>
-              {{post.nama}}
+              {{infoprofile.nama}}
               </ion-card-title>
-              <h3>{{post.email}}</h3>
-              <h3>{{post.point}}</h3>
-              <h3>{{post.exp}}</h3>
+              <h3>{{infoprofile.email}}</h3>
+              <h3>{{infoprofile.point}}</h3>
+              <h3>{{infoprofile.exp}}</h3>
             </ion-card-content>
 
           </ion-col>

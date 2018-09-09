@@ -20,16 +20,21 @@ import { HomePage } from '../home/home';
 export class ProfilAtletPage {
   
   changePassword:any;
-  infoprofile:any;
-  // infoprofile = {
-  //   id: "",
-  //   nama_gaya: "",
-  //   jarak: ""
+  //infoprofile:any;
   
-  // };
+
+  infoprofile = {
+    id: "",
+    nama: "",
+    tanggallahir: "",
+    email:"",
+    point:"",
+    exp:""
+  
+  };
 
   constructor(public navCtrl: NavController, private app:App, public navParams: NavParams, public http: Http
-  ,public webService: WebService, public AuthService: AuthService) {
+  ,public webService: WebService, public authService: AuthService) {
     this.changePassword = ChangePasswordPage;
 
     // this.http.get('https://www.reddit.com/r/gifs/new/.json?limit=10').map(res => res.json()).subscribe(data => {
@@ -37,16 +42,20 @@ export class ProfilAtletPage {
     // });
   }
 
-  ion
   ionViewDidLoad() {
+    
+    let req = {
+      'id' : this.authService.id
+    }
+
     console.log('ionViewDidLoad ProfilAtletPage');
-    this.webService.get(this.webService.url + "getprofile.php", null).subscribe(response => {
+    this.webService.post(this.webService.url + "getprofile.php", JSON.stringify(req), null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
       if(responseData){
         console.log(JSON.stringify(responseData))
       
-        this.infoprofile = responseData;
+        this.infoprofile = responseData[0];
         //console.log(this.classInfo);
       }
     }, error =>{
@@ -55,7 +64,7 @@ export class ProfilAtletPage {
 
 
   logout(){
-    this.AuthService.logout(() => {
+    this.authService.logout(() => {
       //set root
       this.app.getRootNav().setRoot(HomePage);
   });

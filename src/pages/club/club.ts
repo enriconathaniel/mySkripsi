@@ -17,7 +17,7 @@ import { WebService } from '../../service/WebService';
   templateUrl: 'club.html',
 })
 export class ClubPage {
-
+  userlist:any;
   infoclub:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http
@@ -34,6 +34,21 @@ export class ClubPage {
         console.log(JSON.stringify(responseData))
       
         this.infoclub = responseData;
+        //console.log(this.classInfo);
+      }
+    }, error =>{
+    })
+
+    this.webService.get(this.webService.url + "getatletlist.php", null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+      if(responseData){
+        // console.log(JSON.stringify(responseData),'ASaas')
+        
+        this.userlist = responseData.map(function(element){
+          element.isChecked = false;
+          return element;
+        });
         //console.log(this.classInfo);
       }
     }, error =>{
