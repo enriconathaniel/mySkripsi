@@ -14,23 +14,22 @@
 
 
 <ion-content padding>
-  <form>
-    <ion-list >
+  <form [formGroup]="loginForm" (ngSubmit)="signInPelatih()">
+    <ion-list>
             
       <ion-item>
         <ion-label col-4>Email</ion-label>   
-        <ion-input type="text" placeholder="Email"></ion-input>
+        <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label col-4>Password</ion-label>
-        <ion-input type="text" placeholder="Password"></ion-input>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
       </ion-item>
       <ion-item >
-        <button ion-button color="primary" block>Sign In</button>
+        <button type="submit" ion-button color="primary" block>Sign In</button>
         <br>
         <button ion-button color="light" block navPop>Back</button>
       </ion-item>
-      
     </ion-list>
   </form>
 </ion-content>

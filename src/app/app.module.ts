@@ -33,6 +33,7 @@ import { HttpModule } from '@angular/http';
 import { RegisterPage } from '../pages/register/register';
 import { AuthService } from '../service/AuthService';
 import { IonicStorageModule } from '../../node_modules/@ionic/storage';
+import { HistoryRewardPage } from '../pages/history-reward/history-reward';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { IonicStorageModule } from '../../node_modules/@ionic/storage';
     CreateTaskPage,
     AddRewardPage,
     ChangePasswordPage,
-    RegisterPage
+    RegisterPage,
+    HistoryRewardPage
     
   ],
   imports: [
@@ -84,7 +86,8 @@ import { IonicStorageModule } from '../../node_modules/@ionic/storage';
     CreateTaskPage,
     AddRewardPage,
     ChangePasswordPage,
-    RegisterPage
+    RegisterPage,
+    HistoryRewardPage
   ],
   providers: [
     StatusBar,

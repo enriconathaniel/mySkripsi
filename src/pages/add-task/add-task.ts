@@ -20,6 +20,7 @@ export class AddTaskPage {
   addtaskForm:FormGroup;
   selectgaya:any;
   userlist:any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private builder: FormBuilder, private webService : WebService) {
   }
@@ -70,7 +71,7 @@ export class AddTaskPage {
       repetition: ['', Validators.required],
       gaya: ['', Validators.required],
       waktu_target: ['', Validators.required]
-      
+      //user_data: this.builder.array([])
     });
   }
 

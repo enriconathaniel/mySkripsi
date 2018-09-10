@@ -57,6 +57,50 @@ export class AuthService{
             onFailed();
         });
     }
+
+
+    login_pelatih(email:string, password:string, onSuccess:Function, onFailed: Function){
+        //let url = "http://delthraze.esy.es/Boopang/API/sign_in.php";
+        //let url = "http://localhost/umnspa/login.php";
+        let url = this.webService.url + "login_pelatih.php";
+        let requestData = {
+            "email" : email,
+            "password" : password,
+        };
+
+        let header = new Headers({
+            'Content-Type': 'application/json'
+        });
+
+        this.webSvc.post(url, JSON.stringify(requestData), header)
+        .subscribe(response => {
+            console.log(response,'hhS');
+            if(response == null){
+                onFailed("NO_CONNECTION");
+            }
+            else{
+                console.log(response["_body"]);
+                let responseData:any = JSON.parse(response["_body"]);
+                //console.log(JSON.stringify(responseData));
+                if(responseData == null){
+                    onFailed();
+                }
+                else if(responseData['success'] == true){
+                    this.id = responseData['id'];
+                    const session = {
+                        id: responseData['id']
+                    }
+                    this.storage.set('sessions', session);
+                    onSuccess();
+                }
+                else{
+                    onFailed("INVALID_LOGIN_DATA");
+                }
+            }
+        }, error => {
+            onFailed();
+        });
+    }
     
     logout(onSuccess:Function){
         const session = {

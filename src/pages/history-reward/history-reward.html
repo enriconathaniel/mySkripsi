@@ -1,0 +1,33 @@
+<!--
+  Generated template for the HistoryRewardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>historyRewardPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+
+    <ion-row *ngFor="let list of rewardlist">
+      <ion-col>
+        {{list.nama}}
+      </ion-col>
+      <ion-col>
+        {{list.harga}}
+      </ion-col>
+      <ion-col>
+        {{list.tanggal}}
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

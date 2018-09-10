@@ -29,7 +29,7 @@ export class MyApp {
           this.authService.id = value.id
           this.rootPage = MenuAtletPage;
         } else {
-          this.rootPage = LoginAtletPage;
+          this.rootPage = HomePage;
         }
       });
     });
