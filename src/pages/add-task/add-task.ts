@@ -70,8 +70,8 @@ export class AddTaskPage {
       max_exp: ['', Validators.required],
       repetition: ['', Validators.required],
       gaya: ['', Validators.required],
-      waktu_target: ['', Validators.required]
-      //user_data: this.builder.array([])
+      waktu_target: ['', Validators.required],
+      user_check: this.builder.array([])
     });
   }
 
@@ -106,5 +106,7 @@ export class AddTaskPage {
     }, error =>{
     })
   }
+
+  
 
 }
