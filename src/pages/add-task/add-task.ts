@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WebService } from '../../service/WebService';
 import {FormGroup, Validators, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { HistoryAtletPage } from '../history-atlet/history-atlet';
+import { CreateTaskPage } from '../create-task/create-task';
 
 /**
  * Generated class for the AddTaskPage page.
@@ -20,6 +21,8 @@ export class AddTaskPage {
   addtaskForm:FormGroup;
   selectgaya:any;
   userlist:any;
+
+  userCollection : {id: string, nama: string}[];
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private builder: FormBuilder, private webService : WebService) {
@@ -63,50 +66,31 @@ export class AddTaskPage {
 
   formCheck(){
     this.addtaskForm = this.builder.group({
-      deskripsi: ['', Validators.required],
-      point: ['', Validators.required],
-      max_umur: ['', Validators.required],
-      min_exp: ['', Validators.required],
-      max_exp: ['', Validators.required],
-      repetition: ['', Validators.required],
       gaya: ['', Validators.required],
-      waktu_target: ['', Validators.required],
+
       user_check: this.builder.array([])
     });
+    console.log(this.addtaskForm, "task form")
   }
 
   onSubmit(){
-    let thisForm = this.addtaskForm.value;
-    console.log(thisForm);
-    let req = {
-      "deskripsi" : thisForm.deskripsi,
-      "point" : thisForm.point,
-      "max_umur" : thisForm.max_umur,
-      "min_exp" : thisForm.min_exp,
-      "max_exp" : thisForm.max_exp,
-      "repetition" : thisForm.repetition,
-      "id_gaya" : thisForm.gaya,
-      "waktu_target" : thisForm.waktu_target
-    }
-    console.log(req)
-    this.webService.post("http://localhost:8080/api_skripsi/add_task.php", JSON.stringify(req), null).subscribe(response => {
-      console.log(response,'<<<<<<<<<');
-      let responseData = JSON.parse(response["_body"]);
-      console.log(responseData)
-      if(responseData['insert']){
-        this.navCtrl.popTo(HistoryAtletPage);
-        //this.navCtrl.push(QuestAtletPage);
-        // let x = this.AuthService.signup(
-        //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
-        //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
-        //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
-        // );
-        //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
-      }
-    }, error =>{
-    })
+    console.log(this.addtaskForm, "cekdataaddtask")
+    this.navCtrl.push(CreateTaskPage, this.addtaskForm.value);
   }
 
+  onChange(id: string, nama: string, checked){
+    const answers = <FormArray>this.addtaskForm.controls.user_check
+    if(checked) {
+        answers.push(new FormControl({id: id, nama: nama}))
+    } else{ 
+        let idx = answers.controls.findIndex(x => x.value.id == id)
+        if(idx > -1){
+          answers.removeAt(idx)
+        }
+
+    }
+    
+  }
   
 
 }

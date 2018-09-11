@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AddTaskPage } from '../add-task/add-task';
-import { AuthService } from '../../service/AuthService';
-import { WebService } from '../../service/WebService';
 import { Http } from '../../../node_modules/@angular/http';
+import { WebService } from '../../service/WebService';
+import { AuthService } from '../../service/AuthService';
 
 /**
- * Generated class for the HistoryAtletPage page.
+ * Generated class for the AtletDataPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,27 +13,30 @@ import { Http } from '../../../node_modules/@angular/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-history-atlet',
-  templateUrl: 'history-atlet.html',
+  selector: 'page-atlet-data',
+  templateUrl: 'atlet-data.html',
 })
-export class HistoryAtletPage {
-  addTaskPage:any;
-  historyall:any;
+export class AtletDataPage {
+  idatlet = this.navParams.data;
+  listlatihan:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public http: Http, public webService: WebService, public authService: AuthService) {
-    this.addTaskPage = AddTaskPage;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryAtletPage');
+    console.log('ionViewDidLoad AtletDataPage');
 
-    this.webService.get(this.webService.url + "get_hasil_latihan_all.php", null).subscribe(response => {
+    let req = {
+      'id' : this.idatlet
+    }
+
+    this.webService.post(this.webService.url + "get_history_reward.php", JSON.stringify(req) ,null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
       if(responseData){
         console.log(JSON.stringify(responseData))
         
-        this.historyall = responseData;
+        this.listlatihan = responseData;
         //console.log(this.classInfo);
       }
     }, error =>{

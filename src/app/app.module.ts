@@ -34,6 +34,8 @@ import { RegisterPage } from '../pages/register/register';
 import { AuthService } from '../service/AuthService';
 import { IonicStorageModule } from '../../node_modules/@ionic/storage';
 import { HistoryRewardPage } from '../pages/history-reward/history-reward';
+import { EditClubPage } from '../pages/edit-club/edit-club';
+import { AtletDataPage } from '../pages/atlet-data/atlet-data';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { HistoryRewardPage } from '../pages/history-reward/history-reward';
     AddRewardPage,
     ChangePasswordPage,
     RegisterPage,
-    HistoryRewardPage
+    HistoryRewardPage,
+    EditClubPage,
+    AtletDataPage
     
   ],
   imports: [
@@ -87,7 +91,9 @@ import { HistoryRewardPage } from '../pages/history-reward/history-reward';
     AddRewardPage,
     ChangePasswordPage,
     RegisterPage,
-    HistoryRewardPage
+    HistoryRewardPage,
+    EditClubPage,
+    AtletDataPage
   ],
   providers: [
     StatusBar,

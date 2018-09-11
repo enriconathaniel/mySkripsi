@@ -14,8 +14,28 @@
 
 
 <ion-content padding>
-  <ion-item>
-    
-  </ion-item>
+  <form [formGroup]="createTaskForm" (ngSubmit)="onSubmit()">
+    <ion-grid formArrayName="waktuRenangAtlet">
+      <ion-row [formGroupName]="i" *ngFor="let user of userlist; let i=index" >
+          <ion-col>
+            <ion-input formControlName="namaAtlit" readonly value="{{user.nama}}"></ion-input>
+            <ion-input formControlName="idAtlit" hidden value="{{user.id}}"></ion-input>
+          </ion-col>
+          <ion-col>
+            
+            <ion-datetime 
+              placeholder="Waktu Atlet" 
+              displayFormat="HH:mm:ss" 
+              pickerFormat="HH mm ss"
+              formControlName="waktuAtlit"
+              >
+            </ion-datetime>
+          </ion-col>
+      </ion-row>  
+    </ion-grid>  
 
+    <ion-item>
+      <button ion-button color="primary" block>Submit</button>
+    </ion-item>
+  </form>
 </ion-content>

@@ -40,6 +40,10 @@
           <p text-justify>
             {{list.clubinfo}}
           </p>
+          <button ion-button icon-start clear item-end (click)="edit()">
+            
+            edit
+          </button>
         </ion-row>
       </ion-grid>
 
@@ -52,7 +56,10 @@
           {{user.nama}}
         </ion-col>
         <ion-col>
-          
+          <button ion-button icon-start clear item-end (click)="infoatlet(user.id)">
+            <ion-icon name="information-circle"></ion-icon>
+            edit
+          </button>
         </ion-col>
       </ion-row>
 

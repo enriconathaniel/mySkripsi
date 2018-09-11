@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { WebService } from '../../service/WebService';
+import { EditClubPage } from '../edit-club/edit-club';
+import { AtletDataPage } from '../atlet-data/atlet-data';
 
 
 /**
@@ -53,6 +55,15 @@ export class ClubPage {
       }
     }, error =>{
     })
+
+  }
+
+  edit(){
+    this.navCtrl.push(EditClubPage);
+  }
+
+  infoatlet(id){
+    this.navCtrl.push(AtletDataPage,id);
 
   }
 

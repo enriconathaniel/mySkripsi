@@ -30,7 +30,7 @@
     <div class="row" >
       <ion-item *ngFor="let user of userlist" formArrayName="user_check">
         <ion-label>{{user.nama}}</ion-label>
-        <ion-checkbox item-end></ion-checkbox>
+        <ion-checkbox  [checked]="false" (ionChange)="onChange(user.id, user.nama, $event.checked)" item-end></ion-checkbox>
       </ion-item>
     </div>
     <ion-item>

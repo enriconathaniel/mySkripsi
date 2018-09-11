@@ -19,5 +19,21 @@
 
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row *ngFor="let history of historyall">
+      <ion-col>
+        {{history.nama_atlet}}
+      </ion-col>
+      <ion-col>
+        {{history.jarak}}m {{history.nama_gaya}}
+      </ion-col>
+      <ion-col>
+        {{history.tanggal}}
+      </ion-col>
+      <ion-col>
+        {{history.waktu}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
