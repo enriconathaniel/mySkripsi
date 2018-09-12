@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-title>History</ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="rolevalid">
       <button ion-button icon-only [navPush]="addTaskPage">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -18,20 +18,32 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-grid>
-    <ion-row *ngFor="let history of historyall">
+<ion-content padding >
+  <ion-grid *ngIf="rolevalid">
+    <ion-row *ngFor="let atlet of userlist">
       <ion-col>
-        {{history.nama_atlet}}
+        {{atlet.nama}}
       </ion-col>
       <ion-col>
-        {{history.jarak}}m {{history.nama_gaya}}
+        <button ion-button icon-start clear item-end (click)="infoatlet(atlet.id)">
+          <ion-icon name="information-circle"></ion-icon>
+        </button>
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid *ngIf="!rolevalid">
+    <ion-row *ngFor="let list of listlatihan">
+      <ion-col>
+        {{list.jarak}}m {{list.nama_gaya}}
       </ion-col>
       <ion-col>
-        {{history.tanggal}}
+        {{list.tanggal}}
       </ion-col>
       <ion-col>
-        {{history.waktu}}
+        {{list.waktu}}
       </ion-col>
     </ion-row>
   </ion-grid>

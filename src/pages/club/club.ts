@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { WebService } from '../../service/WebService';
 import { EditClubPage } from '../edit-club/edit-club';
 import { AtletDataPage } from '../atlet-data/atlet-data';
+import { HomePage } from '../home/home';
+import { AuthService } from '../../service/AuthService';
 
 
 /**
@@ -21,13 +23,20 @@ import { AtletDataPage } from '../atlet-data/atlet-data';
 export class ClubPage {
   userlist:any;
   infoclub:any;
+  role:any;
+  rolevalid:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http
-    ,public webService: WebService) {
+  constructor(public navCtrl: NavController, private app:App, public navParams: NavParams, public http: Http
+    ,public webService: WebService, public authService: AuthService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClubPage');
+    this.role = this.authService.role;
+
+    if(this.role == 'pelatih'){
+      this.rolevalid = true ;
+    } else this.rolevalid = false;
 
     this.webService.get(this.webService.url + "getclub.php", null).subscribe(response => {
       //console.log(response["_body"]);
@@ -65,6 +74,13 @@ export class ClubPage {
   infoatlet(id){
     this.navCtrl.push(AtletDataPage,id);
 
+  }
+
+  logout(){
+    this.authService.logout(() => {
+      //set root
+      this.app.getRootNav().setRoot(HomePage);
+    });
   }
 
 }

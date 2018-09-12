@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>Quest</ion-title>
 
-    <ion-buttons end>
+    <ion-buttons end *ngIf="rolevalid">
       <button ion-button icon-only [navPush]="addQuestPage">
         <ion-icon name="add"></ion-icon>
       </button>

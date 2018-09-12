@@ -67,7 +67,7 @@ export class ProfilAtletPage {
     this.authService.logout(() => {
       //set root
       this.app.getRootNav().setRoot(HomePage);
-  });
+    });
   }
 
 }

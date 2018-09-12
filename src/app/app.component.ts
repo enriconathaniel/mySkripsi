@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginAtletPage } from '../pages/login-atlet/login-atlet';
 import { MenuAtletPage } from '../pages/menu-atlet/menu-atlet';
 import { AuthService } from '../service/AuthService';
+import { MenuPelatihPage } from '../pages/menu-pelatih/menu-pelatih';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,8 +27,17 @@ export class MyApp {
 
       storage.get('sessions').then((value) => {
         if (value != null && value.id !== '') {
-          this.authService.id = value.id
-          this.rootPage = MenuAtletPage;
+          if(value.role == "atlet"){
+            this.authService.id = value.id;
+            this.authService.role = value.role;
+            this.rootPage = MenuAtletPage;
+          }
+          else if(value.role == "pelatih"){
+            this.authService.id = value.id;
+            this.authService.role = value.role;
+            this.rootPage = MenuPelatihPage;
+          }
+            
         } else {
           this.rootPage = HomePage;
         }

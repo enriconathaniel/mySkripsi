@@ -6,16 +6,22 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="bar bar-header" align="center">
-    <h1 class="title">Welcome</h1>
+  <div class="container">
+    <div class="box">
+      <div align="center">
+        <h1 class="title">WELCOME</h1>
+        <img src="../../assets/imgs/logo.png" style="width: 200px; height: auto;" />
+        <br>
+        <h5 class="title">Login As</h5>
+        <br>
+        <div style="flex-direction: row">
+          <button ion-button [navPush]="loginAtlet" color="primary" round> Atlet </button>
+          <button ion-button [navPush]="loginPelatih" color="primary" outline round>Pelatih</button>
+        </div>
+
+      </div>
+
+    </div>
   </div>
-
-  <div class="bar bar-subheader" align="center">
-    <h5 class="title">Login As</h5>
-
-    <button ion-button [navPush]="loginAtlet" color="light">Atlet</button>
-    <button ion-button [navPush]="loginPelatih" color="light">Pelatih</button>
-  </div>
-
 
 </ion-content>

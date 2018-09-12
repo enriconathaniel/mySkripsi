@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http } from '../../../node_modules/@angular/http';
-import { WebService } from '../../service/WebService';
 import { AuthService } from '../../service/AuthService';
+import { WebService } from '../../service/WebService';
+import { Http } from '../../../node_modules/@angular/http';
 
 /**
- * Generated class for the AtletDataPage page.
+ * Generated class for the HasilLatihanPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,19 +13,20 @@ import { AuthService } from '../../service/AuthService';
 
 @IonicPage()
 @Component({
-  selector: 'page-atlet-data',
-  templateUrl: 'atlet-data.html',
+  selector: 'page-hasil-latihan',
+  templateUrl: 'hasil-latihan.html',
 })
-export class AtletDataPage {
+export class HasilLatihanPage {
   idatlet = this.navParams.data;
   listlatihan:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public http: Http, public webService: WebService, public authService: AuthService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AtletDataPage');
-    
+    console.log('ionViewDidLoad HasilLatihanPage');
+
     let req = {
       'id' : this.idatlet
     }
@@ -41,7 +42,6 @@ export class AtletDataPage {
       }
     }, error =>{
     })
-
   }
 
 }

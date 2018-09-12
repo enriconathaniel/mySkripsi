@@ -36,6 +36,8 @@ import { IonicStorageModule } from '../../node_modules/@ionic/storage';
 import { HistoryRewardPage } from '../pages/history-reward/history-reward';
 import { EditClubPage } from '../pages/edit-club/edit-club';
 import { AtletDataPage } from '../pages/atlet-data/atlet-data';
+import { MenuPelatihPage } from '../pages/menu-pelatih/menu-pelatih';
+import { HasilLatihanPage } from '../pages/hasil-latihan/hasil-latihan';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { AtletDataPage } from '../pages/atlet-data/atlet-data';
     RegisterPage,
     HistoryRewardPage,
     EditClubPage,
-    AtletDataPage
+    AtletDataPage,
+    MenuPelatihPage,
+    HasilLatihanPage
     
   ],
   imports: [
@@ -93,7 +97,9 @@ import { AtletDataPage } from '../pages/atlet-data/atlet-data';
     RegisterPage,
     HistoryRewardPage,
     EditClubPage,
-    AtletDataPage
+    AtletDataPage,
+    MenuPelatihPage,
+    HasilLatihanPage
   ],
   providers: [
     StatusBar,

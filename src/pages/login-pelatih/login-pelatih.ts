@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../service/AuthService';
 import { MenuAtletPage } from '../menu-atlet/menu-atlet';
+import { MenuPelatihPage } from '../menu-pelatih/menu-pelatih';
 
 /**
  * Generated class for the LoginPelatihPage page.
@@ -41,7 +42,7 @@ export class LoginPelatihPage {
   signInPelatih(){
     console.log(this.loginForm.value.email , this.loginForm.value.password);
     this.authService.login_pelatih(this.loginForm.value.email, this.loginForm.value.password, ()=>{
-      this.app.getRootNav().setRoot(MenuAtletPage); 
+      this.app.getRootNav().setRoot(MenuPelatihPage); 
       console.log("Kepangil")
     }, (errorType) => {
       if(errorType === 'INVALID_LOGIN_DATA'){

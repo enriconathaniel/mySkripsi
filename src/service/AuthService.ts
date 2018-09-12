@@ -8,7 +8,10 @@ import { Storage } from '@ionic/storage';
 export class AuthService{
     email = "";
     id: any;
+    role: any;
     notification: "";
+    rolepelatih : "pelatih";
+    roleatlet: "atlet";
 
     constructor(private webSvc:WebService,
         private alertCtrl: AlertController,
@@ -43,8 +46,10 @@ export class AuthService{
                 }
                 else if(responseData['success'] == true){
                     this.id = responseData['id'];
+                    this.role = responseData['role'];
                     const session = {
-                        id: responseData['id']
+                        id: responseData['id'],
+                        role: responseData['role']
                     }
                     this.storage.set('sessions', session);
                     onSuccess();
@@ -87,8 +92,10 @@ export class AuthService{
                 }
                 else if(responseData['success'] == true){
                     this.id = responseData['id'];
+                    this.role = responseData['role'];
                     const session = {
-                        id: responseData['id']
+                        id: responseData['id'],
+                        role: responseData['role']
                     }
                     this.storage.set('sessions', session);
                     onSuccess();
@@ -104,7 +111,8 @@ export class AuthService{
     
     logout(onSuccess:Function){
         const session = {
-            id: ''
+            id: '',
+            role:''
         }
         this.storage.set('sessions', session);
         onSuccess();

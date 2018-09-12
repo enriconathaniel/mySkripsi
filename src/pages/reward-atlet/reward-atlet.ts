@@ -22,6 +22,8 @@ export class RewardAtletPage {
   historyreward:any;
   rewardlist:any;
   addreward:any;
+  role:any;
+  rolevalid:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: Http, public webService: WebService, public authService: AuthService ) {
@@ -31,7 +33,11 @@ export class RewardAtletPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RewardAtletPage');
-
+    this.role = this.authService.role;
+    if(this.role == 'pelatih'){
+      this.rolevalid = true ;
+    } else this.rolevalid = false;
+    
     this.webService.get(this.webService.url + "getreward.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
@@ -48,6 +54,8 @@ export class RewardAtletPage {
 
   onSubmit(idreward, rewardharga){
     //let thisForm = this.addrewardForm.value;
+    
+    
     let req = {
       'id_user' : this.authService.id,
       'id_reward': idreward

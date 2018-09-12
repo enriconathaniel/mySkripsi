@@ -40,13 +40,12 @@
           <p text-justify>
             {{list.clubinfo}}
           </p>
-          <button ion-button icon-start clear item-end (click)="edit()">
-            
-            edit
-          </button>
+          
         </ion-row>
       </ion-grid>
-
+        <button *ngIf="rolevalid" ion-button icon-end clear item-end (click)="edit()">
+          edit
+        </button>
     </ion-card>
 
     <ion-grid>
@@ -55,13 +54,16 @@
         <ion-col>
           {{user.nama}}
         </ion-col>
-        <ion-col>
+        <ion-col *ngIf="rolevalid">
           <button ion-button icon-start clear item-end (click)="infoatlet(user.id)">
             <ion-icon name="information-circle"></ion-icon>
-            edit
           </button>
         </ion-col>
       </ion-row>
+
+      <ion-item *ngIf="rolevalid">
+        <button ion-button color="primary" block (click)="logout()">Log Out</button>
+      </ion-item>
 
     </ion-grid>
 
