@@ -38,6 +38,8 @@ import { EditClubPage } from '../pages/edit-club/edit-club';
 import { AtletDataPage } from '../pages/atlet-data/atlet-data';
 import { MenuPelatihPage } from '../pages/menu-pelatih/menu-pelatih';
 import { HasilLatihanPage } from '../pages/hasil-latihan/hasil-latihan';
+import { LeaderboardExpPage } from '../pages/leaderboard-exp/leaderboard-exp';
+import { LeaderboardPointPage } from '../pages/leaderboard-point/leaderboard-point';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { HasilLatihanPage } from '../pages/hasil-latihan/hasil-latihan';
     EditClubPage,
     AtletDataPage,
     MenuPelatihPage,
-    HasilLatihanPage
+    HasilLatihanPage,
+    LeaderboardExpPage,
+    LeaderboardPointPage
     
   ],
   imports: [
@@ -99,7 +103,10 @@ import { HasilLatihanPage } from '../pages/hasil-latihan/hasil-latihan';
     EditClubPage,
     AtletDataPage,
     MenuPelatihPage,
-    HasilLatihanPage
+    HasilLatihanPage,
+    LeaderboardExpPage,
+    LeaderboardPointPage
+    
   ],
   providers: [
     StatusBar,

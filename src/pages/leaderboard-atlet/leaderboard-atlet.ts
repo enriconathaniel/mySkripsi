@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LeaderboardExpPage } from '../leaderboard-exp/leaderboard-exp';
+import { LeaderboardPointPage } from '../leaderboard-point/leaderboard-point';
 
 /**
  * Generated class for the LeaderboardAtletPage page.
@@ -14,12 +16,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'leaderboard-atlet.html',
 })
 export class LeaderboardAtletPage {
+  tab1Root = LeaderboardExpPage;
+  tab2Root = LeaderboardPointPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LeaderboardAtletPage');
+
+    
   }
 
 }

@@ -20,14 +20,17 @@
 
 <ion-content padding >
   <ion-grid *ngIf="rolevalid">
-    <ion-row *ngFor="let atlet of userlist">
-      <ion-col>
+    <ion-row *ngFor="let atlet of userlist, let i=index">
+      <ion-col col-2>
+        {{i+1}}
+      </ion-col>
+      <ion-col col-8 >
         {{atlet.nama}}
       </ion-col>
-      <ion-col>
-        <button ion-button icon-start clear item-end (click)="infoatlet(atlet.id)">
-          <ion-icon name="information-circle"></ion-icon>
-        </button>
+      <ion-col col-2>
+        
+          <ion-icon name="information-circle" (click)="infoatlet(atlet.id)"></ion-icon>
+        
       </ion-col>
       
     </ion-row>
@@ -35,7 +38,7 @@
 
 
   <ion-grid *ngIf="!rolevalid">
-    <ion-row *ngFor="let list of listlatihan">
+    <ion-row *ngFor="let list of listlatihan" text-center>
       <ion-col>
         {{list.jarak}}m {{list.nama_gaya}}
       </ion-col>

@@ -50,14 +50,17 @@
 
     <ion-grid>
 
-      <ion-row *ngFor="let user of userlist">
-        <ion-col>
+      <ion-row *ngFor="let user of userlist, let i=index">
+        <ion-col col-2>
+          {{i+1}}
+        </ion-col>
+        <ion-col col-8>
           {{user.nama}}
         </ion-col>
-        <ion-col *ngIf="rolevalid">
-          <button ion-button icon-start clear item-end (click)="infoatlet(user.id)">
-            <ion-icon name="information-circle"></ion-icon>
-          </button>
+        <ion-col *ngIf="rolevalid" col-2>
+        
+          <ion-icon name="information-circle" (click)="infoatlet(user.id)"></ion-icon>
+          
         </ion-col>
       </ion-row>
 

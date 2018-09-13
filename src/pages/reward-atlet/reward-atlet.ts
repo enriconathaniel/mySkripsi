@@ -55,28 +55,47 @@ export class RewardAtletPage {
   onSubmit(idreward, rewardharga){
     //let thisForm = this.addrewardForm.value;
     
-    
-    let req = {
+    let req_update = {
       'id_user' : this.authService.id,
-      'id_reward': idreward
+      'harga': rewardharga
     }
-    console.log(req)
-    this.webService.post("http://localhost:8080/api_skripsi/add_history_reward.php", JSON.stringify(req), null).subscribe(response => {
+    
+    console.log("update req ",req_update)
+
+
+    this.webService.post("http://localhost:8080/api_skripsi/update_atlet_reward.php", JSON.stringify(req_update), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)
       if(responseData['insert']){
-        // let x = this.AuthService.signup(
-        //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
-        //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
-        //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
-        // );
-        //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
+        
+        let req_history = {
+          'id_user' : this.authService.id,
+          'id_reward': idreward
+        }
+        this.webService.post("http://localhost:8080/api_skripsi/add_history_reward.php", JSON.stringify(req_history), null).subscribe(response => {
+          console.log(response,'<<<<<<<<<');
+          let responseData = JSON.parse(response["_body"]);
+          console.log(responseData)
+          if(responseData['insert']){
+            // let x = this.AuthService.signup(
+            //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
+            //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
+            //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
+            // );
+            //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
 
-        this.navCtrl.popTo(RewardAtletPage);
+            this.navCtrl.popTo(RewardAtletPage);
+          }
+        }, error =>{
+        })
+
+        
       }
     }, error =>{
     })
+
+
   }
 
 }
