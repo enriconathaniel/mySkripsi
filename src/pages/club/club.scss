@@ -1,3 +1,72 @@
 page-club {
-
-}
+    ion-content {
+      display: flex;
+    }
+    h1,
+    h2,
+    h3,
+    p {
+      color: white;
+      font-weight: 300;
+    }
+    .profil-container {
+      height: 280px;
+      width: 100%;
+      background-image: linear-gradient(
+        to bottom right,
+        map-get($colors, primary),
+        map-get($colors, secondary)
+      );
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .dp-container {
+      width: 120px;
+      height: auto;
+      border-radius: 60px;
+    }
+    .card {
+      display: flex;
+      height: 60px;
+      background: linear-gradient(
+        to bottom right,
+        map-get($colors, primary),
+        map-get($colors, secondary)
+      );
+      padding-left: 15px;
+      border: 1px map-get($colors, primary) solid;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    .list {
+      background: white;
+      display: flex;
+      flex: 1;
+      height: 100%;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .centering {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: flex-end;
+      flex-direction: column;
+      padding: 10px;
+    }
+    .nama {
+      font-weight: 200;
+      font-size: 16px;
+    }
+  
+    .nama-container {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 10px;
+    }
+  }

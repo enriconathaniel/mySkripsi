@@ -24,6 +24,10 @@ export class RewardAtletPage {
   addreward:any;
   role:any;
   rolevalid:any;
+  list_barang:any;
+  arrgold:any = [];
+  arrsilver:any = [];
+  arrbronze:any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: Http, public webService: WebService, public authService: AuthService ) {
@@ -38,13 +42,28 @@ export class RewardAtletPage {
       this.rolevalid = true ;
     } else this.rolevalid = false;
     
-    this.webService.get(this.webService.url + "getreward.php", null).subscribe(response => {
+    // this.webService.get(this.webService.url + "getreward.php", null).subscribe(response => {
+    //   //console.log(response["_body"]);
+    //   let responseData = JSON.parse(response["_body"]);
+    //   if(responseData){
+    //     console.log(JSON.stringify(responseData))
+        
+    //     this.rewardlist = responseData;
+    //     //console.log(this.classInfo);
+    //   }
+    // }, error =>{
+    // })
+
+    this.webService.get(this.webService.url + "get_reward_barang.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
       if(responseData){
         console.log(JSON.stringify(responseData))
-        
         this.rewardlist = responseData;
+
+       
+
+        //this.list_barang = responseData;
         //console.log(this.classInfo);
       }
     }, error =>{

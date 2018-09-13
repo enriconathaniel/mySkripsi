@@ -14,11 +14,7 @@
         <ion-icon name="clock"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons *ngIf="rolevalid" end>
-      <button ion-button icon-only [navPush]="addreward">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
+    
 
   </ion-navbar>
 
@@ -30,14 +26,25 @@
       <img style="width:50%" center src="assets/gambar/{{list.gambar}}"/>
       <ion-card-content>
         <ion-card-title>
-            {{list.nama}}
-          </ion-card-title>
-        <p>
-            {{list.harga}}
-        </p>
+          <ion-row>
+            <ion-col>
+              {{list.jenis}}
+            </ion-col>
+            <ion-col>
+              {{list.harga}}
+            </ion-col>
+          </ion-row>
+          <div *ngFor="let item of list.nama_barang">{{item.nama_barang}} </div>
+        </ion-card-title>
+        
 
         <ion-item>
-          <button ion-button icon-start clear item-end (click)="onSubmit(list.id , list.harga)">
+          <ion-buttons *ngIf="rolevalid" end>
+            <button ion-button icon-only [navPush]="addreward">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-buttons>
+          <button *ngIf="!rolevalid" ion-button icon-start clear item-end (click)="onSubmit(list.id , list.harga)">
             <ion-icon name="cart"></ion-icon>
             Buy
           </button>
@@ -45,6 +52,12 @@
 
       </ion-card-content>
     </ion-card>
+
+
+
+    
+
+
     <ion-item>
       <button ion-button color="primary" block navPop>Back</button>
     </ion-item>

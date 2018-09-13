@@ -7,25 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>HasilLatihanPage</ion-title>
+    <ion-title>Hasil Latihan</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <ion-grid>
-    <ion-row *ngFor="let list of listlatihan">
-      <ion-col>
-        {{list.jarak}}m {{list.nama_gaya}}
-      </ion-col>
-      <ion-col>
-        {{list.tanggal}}
-      </ion-col>
-      <ion-col>
-        {{list.waktu}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content>
+  <div class="card" *ngFor="let list of listlatihanlengkap">
+    <div class="list">
+      <div class="date-container" style="flex:1">
+        <div class="tanggal">
+          {{list.date}}
+        </div>
+        <div class="bulan-tahun">
+          {{list.month}}
+          {{list.year}}
+        </div>
+      </div>
+      <div class="centering" style="flex:3">
+        <div class="gaya">{{list.jarak}}m - Gaya {{list.nama_gaya}}</div>
+        <div class="waktu">
+          <ion-icon name="time"></ion-icon>
+          {{list.waktu}}
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 </ion-content>

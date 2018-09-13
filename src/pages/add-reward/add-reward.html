@@ -16,18 +16,14 @@
 <ion-content padding>
   <form [formGroup]="addrewardForm" (ngSubmit)="onSubmit()">
     <ion-item>
-      <ion-img width="80" height="80" src=""></ion-img>
-    </ion-item>
-    <ion-item>
-        <button ion-button color="primary" block>Browse</button>
-    </ion-item>
-    <ion-item>
       <ion-label col-4>Nama Barang</ion-label>   
       <ion-input type="text" placeholder="Nama Barang" formControlName="nama"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label col-4>Harga</ion-label>   
-      <ion-input type="number" placeholder="Harga" formControlName="harga"></ion-input>
+      <ion-label col-4>Kategori</ion-label>   
+      <ion-select formControlName="kategori">
+        <ion-option value="{{list.id}}" *ngFor="let list of rewardlist">{{list.nama}}</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item >
       <button ion-button color="primary" block>Submit</button>

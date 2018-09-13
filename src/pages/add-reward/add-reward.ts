@@ -18,6 +18,7 @@ import { RewardAtletPage } from '../reward-atlet/reward-atlet';
 })
 export class AddRewardPage {
   addrewardForm : FormGroup;
+  rewardlist:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
       private builder: FormBuilder, private webService : WebService) {
@@ -25,6 +26,18 @@ export class AddRewardPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddRewardPage');
+
+    this.webService.get(this.webService.url + "getreward.php", null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+      if(responseData){
+        console.log(JSON.stringify(responseData))
+        
+        this.rewardlist = responseData;
+        //console.log(this.classInfo);
+      }
+    }, error =>{
+    })
   }
 
   ngOnInit(){
@@ -34,8 +47,7 @@ export class AddRewardPage {
   formCheck(){
     this.addrewardForm = this.builder.group({
       nama: ['', Validators.required],
-      harga: ['', Validators.required],
-      gambar: ['', Validators.required],
+      kategori: ['', Validators.required]
       
     });
   }
@@ -43,12 +55,11 @@ export class AddRewardPage {
   onSubmit(){
     let thisForm = this.addrewardForm.value;
     let req = {
-      "nama" : thisForm.nama,
-      "harga" : thisForm.harga,
-      "gambar" : thisForm.gambar
+      "nama_barang" : thisForm.nama,
+      "id_reward" : thisForm.kategori
     }
     console.log(req)
-    this.webService.post("http://localhost:8080/api_skripsi/addreward.php", JSON.stringify(req), null).subscribe(response => {
+    this.webService.post("http://localhost:8080/api_skripsi/add_reward_barang.php", JSON.stringify(req), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)

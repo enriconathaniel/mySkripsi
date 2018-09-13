@@ -17,38 +17,52 @@
 
 </ion-header>
 
+<ion-content>
+  <div *ngIf="rolevalid">
+    <div class="card" *ngFor="let atlet of userlist index as i">
+      <div class="list" (click)="infoatlet(atlet.id)">
+        <div class="nama-container" style="flex:0.5">
+          <div class="rank">
+            {{i+1}}
+          </div>
+        </div>
+        <div class="nama-container" style="flex:3">
+          <div class="nama">
+            {{atlet.nama}}
+          </div>
+        </div>
+        <div class="centering" style="flex:3">
+          <button ion-button icon-start clear item-end>
+            <ion-icon name="list-box"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<ion-content padding >
-  <ion-grid *ngIf="rolevalid">
-    <ion-row *ngFor="let atlet of userlist, let i=index">
-      <ion-col col-2>
-        {{i+1}}
-      </ion-col>
-      <ion-col col-8 >
-        {{atlet.nama}}
-      </ion-col>
-      <ion-col col-2>
-        
-          <ion-icon name="information-circle" (click)="infoatlet(atlet.id)"></ion-icon>
-        
-      </ion-col>
-      
-    </ion-row>
-  </ion-grid>
 
+  <div *ngIf="!rolevalid">
+    <div class="card" *ngFor="let list of listlatihanlengkap">
+      <div class="list">
+        <div class="date-container" style="flex:1">
+          <div class="tanggal">
+            {{list.date}}
+          </div>
+          <div class="bulan-tahun">
+            {{list.month}}
+            {{list.year}}
+          </div>
+        </div>
+        <div class="centering" style="flex:3">
+          <div class="gaya">{{list.jarak}}m - Gaya {{list.nama_gaya}}</div>
+          <div class="waktu">
+            <ion-icon name="time"></ion-icon>
+            {{list.waktu}}
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <ion-grid *ngIf="!rolevalid">
-    <ion-row *ngFor="let list of listlatihan" text-center>
-      <ion-col>
-        {{list.jarak}}m {{list.nama_gaya}}
-      </ion-col>
-      <ion-col>
-        {{list.tanggal}}
-      </ion-col>
-      <ion-col>
-        {{list.waktu}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  </div>
 
 </ion-content>
