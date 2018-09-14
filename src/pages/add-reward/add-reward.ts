@@ -26,7 +26,7 @@ export class AddRewardPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddRewardPage');
-
+    console.log(this.navParams.data)
     this.webService.get(this.webService.url + "getreward.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
@@ -46,8 +46,7 @@ export class AddRewardPage {
 
   formCheck(){
     this.addrewardForm = this.builder.group({
-      nama: ['', Validators.required],
-      kategori: ['', Validators.required]
+      nama: ['', Validators.required]
       
     });
   }
@@ -56,7 +55,7 @@ export class AddRewardPage {
     let thisForm = this.addrewardForm.value;
     let req = {
       "nama_barang" : thisForm.nama,
-      "id_reward" : thisForm.kategori
+      "id_reward" : this.navParams.data
     }
     console.log(req)
     this.webService.post("http://localhost:8080/api_skripsi/add_reward_barang.php", JSON.stringify(req), null).subscribe(response => {

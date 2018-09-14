@@ -29,9 +29,12 @@ export class ProfilAtletPage {
     tanggallahir: "",
     email:"",
     point:"",
-    exp:""
+    exp:"",
+    level:""
   
   };
+
+  levelatlet:any;
 
   constructor(public navCtrl: NavController, private app:App, public navParams: NavParams, public http: Http
   ,public webService: WebService, public authService: AuthService) {
@@ -56,10 +59,51 @@ export class ProfilAtletPage {
         console.log(JSON.stringify(responseData))
       
         this.infoprofile = responseData[0];
+        console.log("cekk", this.infoprofile)
+
+        this.ceklevel(this.infoprofile.exp)
+
+
+
+      }
+    }, error =>{
+    })
+
+    
+
+  }
+
+  ceklevel(exp){
+    this.webService.get(this.webService.url + "get_level_atlet.php", null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+      if(responseData){
+        console.log(JSON.stringify(responseData))
+        this.levelatlet = responseData;
+        console.log(this.levelatlet.length)
+
+
+        for(let i=0; i < (this.levelatlet.length - 1); i++){
+          if(exp <= "10000"){
+            this.infoprofile.level = '50';
+          }
+          else if(this.levelatlet[i].exp_max < exp){
+            console.log("cek data yang masuk ", i ," antaraa" , this.levelatlet)
+           
+            this.infoprofile.level = this.levelatlet[i+1].level;
+            
+          }
+          
+          
+
+        }
+
+
         //console.log(this.classInfo);
       }
     }, error =>{
     })
+    
   }
 
 

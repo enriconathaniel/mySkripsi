@@ -40,13 +40,23 @@
               {{list.harga}}
             </ion-col>
           </ion-row>
-          <div *ngFor="let item of list.nama_barang">{{item.nama_barang}} </div>
+          
         </ion-card-title>
+        <ion-row *ngFor="let item of list.nama_barang">
+          <ion-col col-6>
+            {{item.nama_barang}}
+          </ion-col>
+          <ion-col col-3>
+            <button ion-button icon-start clear item-end (click)="onDelete(item.id)">
+              <ion-icon name="trash" ></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
         
 
         <ion-item>
           <ion-buttons *ngIf="rolevalid" end>
-            <button ion-button icon-only [navPush]="addreward">
+            <button ion-button icon-only (click)="addReward(list.id_reward)">
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-buttons>

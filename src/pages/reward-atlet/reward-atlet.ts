@@ -85,6 +85,11 @@ export class RewardAtletPage {
 
   }
 
+  addReward(id_reward){
+    this.navCtrl.push(AddRewardPage, id_reward)
+  }
+
+
   onSubmit(idreward, rewardharga, pointatlet){
     //let thisForm = this.addrewardForm.value;
     
@@ -138,6 +143,25 @@ export class RewardAtletPage {
     
 
 
+  }
+
+  onDelete(id_barang){
+    let req = {
+      'id' : id_barang
+    }
+
+    console.log(req);
+    this.webService.post(this.webService.url + "delete_data_barang.php", JSON.stringify(req), null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+      if(responseData['success']){
+        console.log("cek hapus")
+      
+        this.navCtrl.popTo(RewardAtletPage);
+        //console.log(this.classInfo);
+      }
+    }, error =>{
+    })
   }
 
 }
