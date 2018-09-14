@@ -1,3 +1,97 @@
 page-leaderboard-point {
-
-}
+    ion-content {
+      display: flex;
+      background-image: linear-gradient(
+        to bottom right,
+        map-get($colors, primary),
+        map-get($colors, secondary)
+      );
+    }
+    .card {
+      display: flex;
+      height: 80px;
+      background: linear-gradient(
+        to bottom right,
+        map-get($colors, light),
+        map-get($colors, light)
+      );
+      padding-left: 15px;
+      border: 1px map-get($colors, primary) solid;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    .list {
+      background: white;
+      display: flex;
+      flex: 1;
+      height: 100%;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .tanggal {
+      font-weight: 200;
+      color: map-get($colors, secondary);
+      font-size: 32px;
+    }
+    .bulan-tahun {
+      font-weight: 300;
+      font-size: 16px;
+    }
+    .gaya {
+      font-size: 24px;
+      font-weight: 300;
+      color: grey;
+    }
+    .waktu {
+      font-size: 20px;
+      font-weight: 200;
+    }
+    .date-container {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .centering {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      background: map-get($colors, secondary);
+      text-align: middle;
+      font-size: 15pt;
+      color: #fff;
+      font-weight: 300;
+    }
+    .nama {
+      font-weight: 200;
+      font-size: 16px;
+    }
+  
+    .nama-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 10px;
+    }
+    h2 {
+      background: tomato;
+      vertical-align: middle;
+      align-self: center;
+    }
+    .rank {
+      font-weight: 300;
+      font-size: 20px;
+      color: map-get($colors, primary);
+    }
+  }

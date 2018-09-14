@@ -16,13 +16,14 @@
 <ion-content padding>
   <ion-grid>
 
-    <ion-row *ngFor="let list of rewardlist">
+    <ion-row *ngFor="let list of rewardlist, let i=index">
+      <ion-col>
+        {{i+1}}
+      </ion-col>
       <ion-col>
         {{list.nama}}
       </ion-col>
-      <ion-col>
-        {{list.harga}}
-      </ion-col>
+      
       <ion-col>
         {{list.tanggal}}
       </ion-col>

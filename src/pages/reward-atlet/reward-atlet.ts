@@ -28,6 +28,15 @@ export class RewardAtletPage {
   arrgold:any = [];
   arrsilver:any = [];
   arrbronze:any = [];
+  infoprofile = {
+    id: "",
+    nama: "",
+    tanggallahir: "",
+    email:"",
+    point:"",
+    exp:""
+  
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: Http, public webService: WebService, public authService: AuthService ) {
@@ -42,17 +51,22 @@ export class RewardAtletPage {
       this.rolevalid = true ;
     } else this.rolevalid = false;
     
-    // this.webService.get(this.webService.url + "getreward.php", null).subscribe(response => {
-    //   //console.log(response["_body"]);
-    //   let responseData = JSON.parse(response["_body"]);
-    //   if(responseData){
-    //     console.log(JSON.stringify(responseData))
-        
-    //     this.rewardlist = responseData;
-    //     //console.log(this.classInfo);
-    //   }
-    // }, error =>{
-    // })
+    let req = {
+      'id' : this.authService.id
+    }
+
+    console.log('ionViewDidLoad ProfilAtletPage');
+    this.webService.post(this.webService.url + "getprofile.php", JSON.stringify(req), null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+      if(responseData){
+        console.log(JSON.stringify(responseData))
+      
+        this.infoprofile = responseData[0];
+        //console.log(this.classInfo);
+      }
+    }, error =>{
+    })
 
     this.webService.get(this.webService.url + "get_reward_barang.php", null).subscribe(response => {
       //console.log(response["_body"]);
@@ -71,48 +85,57 @@ export class RewardAtletPage {
 
   }
 
-  onSubmit(idreward, rewardharga){
+  onSubmit(idreward, rewardharga, pointatlet){
     //let thisForm = this.addrewardForm.value;
     
-    let req_update = {
-      'id_user' : this.authService.id,
-      'harga': rewardharga
-    }
-    
-    console.log("update req ",req_update)
-
-
-    this.webService.post("http://localhost:8080/api_skripsi/update_atlet_reward.php", JSON.stringify(req_update), null).subscribe(response => {
-      console.log(response,'<<<<<<<<<');
-      let responseData = JSON.parse(response["_body"]);
-      console.log(responseData)
-      if(responseData['insert']){
-        
-        let req_history = {
-          'id_user' : this.authService.id,
-          'id_reward': idreward
-        }
-        this.webService.post("http://localhost:8080/api_skripsi/add_history_reward.php", JSON.stringify(req_history), null).subscribe(response => {
-          console.log(response,'<<<<<<<<<');
-          let responseData = JSON.parse(response["_body"]);
-          console.log(responseData)
-          if(responseData['insert']){
-            // let x = this.AuthService.signup(
-            //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
-            //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
-            //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
-            // );
-            //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
-
-            this.navCtrl.popTo(RewardAtletPage);
-          }
-        }, error =>{
-        })
-
-        
+    if((pointatlet - rewardharga) >= 0){
+      let req_update = {
+        'id_user' : this.authService.id,
+        'harga': rewardharga
       }
-    }, error =>{
-    })
+      
+      console.log("update req ",req_update)
+
+
+      this.webService.post("http://localhost:8080/api_skripsi/update_atlet_reward.php", JSON.stringify(req_update), null).subscribe(response => {
+        console.log(response,'<<<<<<<<<');
+        let responseData = JSON.parse(response["_body"]);
+        console.log(responseData,'responsedata 1');
+        if(responseData['insert']){
+          
+          let req_history = {
+            'id_user' : this.authService.id,
+            'id_reward': idreward
+          }
+          console.log("cek_histori",req_history)
+          this.webService.post("http://localhost:8080/api_skripsi/add_history_reward.php", JSON.stringify(req_history), null).subscribe(response => {
+            console.log(response,'<<<<<<<<<');
+            let responseData = JSON.parse(response["_body"]);
+            console.log(responseData)
+            if(responseData['insert']){
+              // let x = this.AuthService.signup(
+              //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
+              //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
+              //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
+              // );
+              //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
+
+              this.navCtrl.popTo(RewardAtletPage);
+            }
+          }, error =>{
+          })
+
+          
+        }
+      }, error =>{
+      })
+
+    }
+    else if((pointatlet - rewardharga) < 0){
+      console.log("kurangduitnyaaa")
+    }
+
+    
 
 
   }

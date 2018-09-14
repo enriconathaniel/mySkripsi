@@ -22,6 +22,12 @@
 
 
 <ion-content padding>
+  <ion-item *ngIf="!rolevalid">
+    <h1 text-center>
+      point : {{infoprofile.point}}
+    </h1>
+  </ion-item>
+
   <ion-card *ngFor="let list of rewardlist">
       <img style="width:50%" center src="assets/gambar/{{list.gambar}}"/>
       <ion-card-content>
@@ -44,7 +50,7 @@
               <ion-icon name="add"></ion-icon>
             </button>
           </ion-buttons>
-          <button *ngIf="!rolevalid" ion-button icon-start clear item-end (click)="onSubmit(list.id , list.harga)">
+          <button *ngIf="!rolevalid" ion-button icon-start clear item-end (click)="onSubmit(list.id_reward , list.harga , infoprofile.point)">
             <ion-icon name="cart"></ion-icon>
             Buy
           </button>

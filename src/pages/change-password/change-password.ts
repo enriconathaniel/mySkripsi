@@ -33,6 +33,7 @@ export class ChangePasswordPage {
 
   formCheck(){
     this.changePasswordForm = this.builder.group({
+      old_password: ['', Validators.required],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
       confirm_password: ['', Validators.required],
     }, {validator: this.matchingPasswords('password', 'confirm_password')});
@@ -54,28 +55,53 @@ export class ChangePasswordPage {
 
 
   onSubmit(){
+
     let thisForm = this.changePasswordForm.value;
-    let req = {
+
+
+    let req_password = {
       "id" : this.authService.id,
       
-      "password" : thisForm.password
+      "password" : thisForm.old_password
     }
-    console.log(req)
-    this.webService.post("http://localhost:8080/api_skripsi/update_password.php", JSON.stringify(req), null).subscribe(response => {
+    console.log(req_password)
+    this.webService.post("http://localhost:8080/api_skripsi/get_check_oldpassword.php", JSON.stringify(req_password), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)
       if(responseData['success']){
-        // let x = this.AuthService.signup(
-        //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
-        //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
-        //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
-        // );
-        //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
-        this.navCtrl.popTo(MenuAtletPage);
+        console.log(responseData['email']);
+        console.log("password bener")
+
+        let req = {
+          "id" : this.authService.id,
+          "email": responseData['email'],
+          "password" : thisForm.password
+        }
+        console.log(req)
+        this.webService.post("http://localhost:8080/api_skripsi/update_password.php", JSON.stringify(req), null).subscribe(response => {
+          console.log(response,'<<<<<<<<<');
+          let responseData = JSON.parse(response["_body"]);
+          console.log(responseData)
+          if(responseData['insert']){
+            console.log("passwordganti" , thisForm.password)
+            this.navCtrl.popTo(MenuAtletPage);
+          }
+        }, error =>{
+        })
+
+
+
       }
     }, error =>{
     })
+
+
+
+
+    
+
+
   }
 
 }

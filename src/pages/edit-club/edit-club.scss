@@ -1,3 +1,9 @@
 page-edit-club {
-
-}
+    ion-textarea {
+      border: 1px solid map-get($colors, primary);
+      border-radius: 5px;
+    }
+    h1 {
+      font-weight: 300;
+    }
+  }

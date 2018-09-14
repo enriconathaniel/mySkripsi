@@ -6,21 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>editClubPage</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <form [formGroup]="editForm" (ngSubmit)="onEdit()" *ngFor="let infoclub of infoclub">
-    <ion-input formControlName="clubinfo" value="{{infoclub.clubinfo}}" height="50%"></ion-input>
-
-    <ion-item>
-      <button ion-button color="primary" block>Submit</button>
-    </ion-item>
-  </form>
-    
-            
-</ion-content>
+    <ion-navbar>
+      <ion-title>Edit Club</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <form [formGroup]="editForm" (ngSubmit)="onEdit()" *ngFor="let infoclub of infoclub">
+      <h1>Description</h1>
+      <ion-textarea formControlName="clubinfo" value="{{infoclub.clubinfo}}"></ion-textarea>
+      <div style="display:flex; justify-content:flex-end">
+        <button ion-button color="primary" style="display:flex; align-self:flex-end" round>Submit</button>
+      </div>
+  
+    </form>
+  
+  
+  </ion-content>
