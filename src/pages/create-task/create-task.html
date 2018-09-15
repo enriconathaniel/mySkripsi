@@ -23,13 +23,31 @@
           </ion-col>
           <ion-col>
             
-            <ion-datetime 
+            <!-- <ion-datetime 
               placeholder="Waktu Atlet" 
               displayFormat="HH:mm:ss" 
               pickerFormat="HH mm ss"
               formControlName="waktuAtlit"
               >
-            </ion-datetime>
+            </ion-datetime> -->
+            <div>
+                <ion-item>
+                    <ion-select placeholder="Menit" formControlName="waktuMenit">
+                        <ion-option value="{{list}}" *ngFor="let list of arrmenit">{{list}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-select placeholder="detik" formControlName="waktuDetik">
+                        <ion-option value="{{list}}" *ngFor="let list of arrdetik">{{list}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-select placeholder="milisecond" formControlName="waktuMilisecond">
+                        <ion-option value="{{list}}" *ngFor="let list of arrmilisecond">{{list}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                  
+              </div>
           </ion-col>
       </ion-row>  
     </ion-grid>  

@@ -23,12 +23,32 @@ export class CreateTaskPage {
   userlist: any;
   gayapick:any;
   addtask: FormArray;
+  
+  arrmenit:any =[];
+  arrdetik:any = [];
+  arrmilisecond:any=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private builder: FormBuilder, private webService: WebService) {
   }
 
   ionViewDidLoad() {
+
+    for(let i = 0 ; i < 60 ; i++){
+      let index = i.toString();
+        if(i<10){
+        index = '0'+i;
+        }
+        this.arrmenit.push(index);
+        this.arrdetik.push(index);
+      }
+    for(let i = 0 ; i < 100 ; i++){
+      let index = i.toString();
+      if(i<10){
+        index = '0'+i;
+        }
+      this.arrmilisecond.push(index);
+    }
     console.log("semua data " ,this.navParams.data)
     this.userlist = this.allForm.user_check;
     this.gayapick = this.allForm.gaya;
@@ -39,7 +59,10 @@ export class CreateTaskPage {
         this.builder.group({
           namaAtlit: [this.userlist[i].nama, Validators.required],
           idAtlit: [this.userlist[i].id, Validators.required],
-          waktuAtlit: ['', Validators.required]
+          //waktuAtlit: ['', Validators.required],
+          waktuMenit: ['', Validators.required],
+          waktuDetik: ['', Validators.required],
+          waktuMilisecond: ['', Validators.required]
         })
       );
     }
@@ -77,7 +100,9 @@ export class CreateTaskPage {
       let req = {
         "id_user" : this.createTaskForm.value.waktuRenangAtlet[i].idAtlit,
         "id_gaya" : this.allForm.gaya,
-        "waktu_target" : this.createTaskForm.value.waktuRenangAtlet[i].waktuAtlit
+        "waktu_target" : this.createTaskForm.value.waktuRenangAtlet[i].waktuMenit + ":" + 
+                        this.createTaskForm.value.waktuRenangAtlet[i].waktuDetik + ":" + 
+                        this.createTaskForm.value.waktuRenangAtlet[i].waktuMilisecond
       }
       console.log(req)
       

@@ -6,23 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Add Reward</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <form [formGroup]="addrewardForm" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label col-4>Nama Barang</ion-label>   
-      <ion-input type="text" placeholder="Nama Barang" formControlName="nama"></ion-input>
-    </ion-item>
-    <ion-item >
-      <button ion-button color="primary" block>Submit</button>
-      <br>
-      <button ion-button color="danger" block>Cancel</button>
-    </ion-item>
-  </form>
-</ion-content>
+    <ion-navbar>
+      <ion-title>Add Reward</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <form [formGroup]="addrewardForm" (ngSubmit)="onSubmit()">
+      <h1>Nama Barang</h1>
+      <ion-input type="text" formControlName="nama"></ion-input>
+      <div style="display:flex; justify-content:flex-end">
+        <button ion-button color="primary" style="display:flex; align-self:flex-end" round>Submit</button>
+      </div>
+      <!-- <br> -->
+      <!-- <button ion-button color="danger" block>Cancel</button> -->
+  
+    </form>
+  </ion-content>

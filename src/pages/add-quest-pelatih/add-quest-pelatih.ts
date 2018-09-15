@@ -47,7 +47,7 @@ export class AddQuestPelatihPage {
         index = '0'+i;
         }
       this.arrmilisecond.push(index);
-  }
+    }
     console.log(this.arrmenit,'arrmn');
 
     this.webService.get(this.webService.url + "getatletlist.php", null).subscribe(response => {
@@ -89,6 +89,8 @@ export class AddQuestPelatihPage {
       menit_target: ['', Validators.required],
       detik_target: ['', Validators.required],
       milisecond_target: ['', Validators.required],
+      point: ['', Validators.required],
+      exp: ['', Validators.required]
       
     });
   }
@@ -116,7 +118,9 @@ export class AddQuestPelatihPage {
       let req = {
         "id_atlet" : thisForm.user_check[i].id,
         "id_gaya" : thisForm.id_gaya,
-        "waktu_target" : thisForm.menit_target + ":" + thisForm.detik_target + ":" + thisForm.milisecond_target
+        "waktu_target" : thisForm.menit_target + ":" + thisForm.detik_target + ":" + thisForm.milisecond_target,
+        "point" : thisForm.point,
+        "exp" : thisForm.exp
       }
       console.log(req)
       this.webService.post("http://localhost:8080/api_skripsi/add_main_quest.php", JSON.stringify(req), null).subscribe(response => {

@@ -46,7 +46,18 @@
               <ion-option value="{{list}}" *ngFor="let list of arrmilisecond">{{list}}</ion-option>
           </ion-select>
       </ion-item>
-        
+      <ion-item>
+        <ion-label col-1>
+          Point
+        </ion-label>
+        <ion-input type="number" formControlName="point" placeholder="Point"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label col-1>
+          Exp
+        </ion-label>
+        <ion-input type="number" formControlName="exp" placeholder="Exp"></ion-input>
+      </ion-item>
     </div>
     <ion-item>
       <button ion-button color="primary" block>Submit</button>
