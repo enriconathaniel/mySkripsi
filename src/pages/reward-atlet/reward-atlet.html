@@ -6,75 +6,80 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Reward</ion-title>
+    <ion-navbar>
+      <ion-title>Reward</ion-title>
+  
+      <ion-buttons *ngIf="!rolevalid" end>
+        <button ion-button icon-only [navPush]="historyreward">
+          <ion-icon name="clock"></ion-icon>
+        </button>
+      </ion-buttons>
+  
+  
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+    <div class="container">
+      <h1 style="color: #0984e3;" *ngIf="!rolevalid" text-center>
+        Your Point:<span style=" font-weight: 300; font-size: 30">
+          {{infoprofile.point}}
+        </span>
+      </h1>
+      <div style="display:flex; flex-direction: column">
+        <div class="card" [ngClass]="i == 0? 'card-1': i==1?'card-2':'card-3'" *ngFor="let list of rewardlist, let i = index">
+          <!-- <div class="flex">
+            <img style="width:130px; height:130px" center src="http://www.pngmart.com/files/7/Gold-Medal-PNG-Pic.png" />
+          </div> -->
+  
+          <div class="flex">
+            <div class="rowed-flex" style="height:50px">
+              <div>
+                <h1>{{list.jenis}}</h1>
+              </div>
+              <div>
+                <h3>{{list.harga}} points</h3>
+              </div>
+            </div>
+            <div class="flex">
+              <h5>Price:</h5>
+              
+              <ion-row *ngFor="let item of list.nama_barang">
+                <ion-col>
+                    <h2 style="margin:2px" >- {{item.nama_barang}} </h2>
+                </ion-col>
+                <ion-col>
+                  <button color="light" outline ion-button icon-only  (click)="onDelete(item.id)">
+                    <ion-icon color="light" name="trash"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
 
-    <ion-buttons *ngIf="!rolevalid" end>
-      <button ion-button icon-only [navPush]="historyreward">
-        <ion-icon name="clock"></ion-icon>
-      </button>
-    </ion-buttons>
-    
-
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <ion-item *ngIf="!rolevalid">
-    <h1 text-center>
-      point : {{infoprofile.point}}
-    </h1>
-  </ion-item>
-
-  <ion-card *ngFor="let list of rewardlist">
-      <img style="width:50%" center src="assets/gambar/{{list.gambar}}"/>
-      <ion-card-content>
-        <ion-card-title>
-          <ion-row>
-            <ion-col>
-              {{list.jenis}}
-            </ion-col>
-            <ion-col>
-              {{list.harga}}
-            </ion-col>
-          </ion-row>
-          
-        </ion-card-title>
-        <ion-row *ngFor="let item of list.nama_barang">
-          <ion-col col-6>
-            {{item.nama_barang}}
-          </ion-col>
-          <ion-col col-3>
-            <button ion-button icon-start clear item-end (click)="onDelete(item.id)">
-              <ion-icon name="trash" ></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-        
-
-        <ion-item>
-          <ion-buttons *ngIf="rolevalid" end>
-            <button ion-button icon-only (click)="addReward(list.id_reward)">
-              <ion-icon name="add"></ion-icon>
-            </button>
-          </ion-buttons>
-          <button *ngIf="!rolevalid" ion-button icon-start clear item-end (click)="onSubmit(list.id_reward , list.harga , infoprofile.point)">
-            <ion-icon name="cart"></ion-icon>
-            Buy
-          </button>
-        </ion-item>
-
-      </ion-card-content>
-    </ion-card>
-
-
-
-    
-
-
-    <ion-item>
-      <button ion-button color="primary" block navPop>Back</button>
+            </div>
+            <div style="height: 40px;" text-right>
+              <ion-buttons *ngIf="rolevalid" end>
+                <button color="light" outline ion-button icon-only round (click)="addReward(list.id_reward)">
+                  <ion-icon color="light" name="add"></ion-icon>
+                </button>
+              </ion-buttons>
+              <button color="light" *ngIf="!rolevalid" ion-button icon-start outline round item-end (click)="onSubmit(list.id_reward , list.harga , infoprofile.point)">
+                <ion-icon name="cart" color="light"></ion-icon>
+                Buy
+              </button>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+  
+    </div>
+  
+  
+  
+    <ion-item no-lines>
+      <button ion-button color="primary" round outline block navPop>Back</button>
     </ion-item>
-</ion-content>
+  </ion-content>

@@ -26,7 +26,7 @@ export class AddRewardPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddRewardPage');
-    console.log(this.navParams.data)
+    console.log("ini nav params", this.navParams.data)
     this.webService.get(this.webService.url + "getreward.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);

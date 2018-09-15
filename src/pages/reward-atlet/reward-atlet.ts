@@ -86,6 +86,7 @@ export class RewardAtletPage {
   }
 
   addReward(id_reward){
+    console.log("idbarangapaya" , id_reward)
     this.navCtrl.push(AddRewardPage, id_reward)
   }
 
