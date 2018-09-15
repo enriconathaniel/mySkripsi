@@ -48,14 +48,15 @@
               
               <ion-row *ngFor="let item of list.nama_barang">
                 <ion-col>
-                    <h2 style="margin:2px" >- {{item.nama_barang}} </h2>
-                </ion-col>
+                    <h3>- {{item.nama_barang}} </h3>
+                </ion-col> 
                 <ion-col>
-                  <button color="light" outline ion-button icon-only  (click)="onDelete(item.id)">
-                    <ion-icon color="light" name="trash"></ion-icon>
-                  </button>
+                    <button  color="light" outline round small   (click)="onDelete(item.id)">
+                        delete
+                </button>
+                                         
                 </ion-col>
-              </ion-row>
+                  </ion-row>
 
             </div>
             <div style="height: 40px;" text-right>

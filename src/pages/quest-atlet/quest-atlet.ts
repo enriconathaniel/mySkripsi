@@ -4,6 +4,8 @@ import { AddQuestPelatihPage } from '../add-quest-pelatih/add-quest-pelatih';
 import { Http } from '../../../node_modules/@angular/http';
 import { WebService } from '../../service/WebService';
 import { AuthService } from '../../service/AuthService';
+import { MainQuestPelatihPage } from '../main-quest-pelatih/main-quest-pelatih';
+import { SideQuestPelatihPage } from '../side-quest-pelatih/side-quest-pelatih';
 
 /**
  * Generated class for the QuestAtletPage page.
@@ -23,29 +25,20 @@ export class QuestAtletPage {
   role:any;
   rolevalid:any;
 
+  tab1Root = MainQuestPelatihPage;
+  tab2Root = SideQuestPelatihPage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: Http, public webService: WebService, public authService: AuthService) {
     this.addQuestPage = AddQuestPelatihPage;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuestAtletPage');
     this.role = this.authService.role;
     if(this.role == 'pelatih'){
       this.rolevalid = true ;
     } else this.rolevalid = false;
-
-    this.webService.get(this.webService.url + "getquest.php", null).subscribe(response => {
-      //console.log(response["_body"]);
-      let responseData = JSON.parse(response["_body"]);
-      if(responseData){
-        console.log(JSON.stringify(responseData))
-      
-        this.questlist = responseData;
-        //console.log(this.classInfo);
-      }
-    }, error =>{
-    })
+    console.log('ionViewDidLoad QuestAtletPage');
 
   }
 

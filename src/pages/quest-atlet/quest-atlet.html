@@ -20,20 +20,13 @@
 
 
 <ion-content padding>
-  <ion-card *ngFor="let list of questlist">
-    <ion-row text-right>
-      <ion-col>
-      </ion-col>
-      <ion-col col-4>
-          {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
-      </ion-col>
-      <ion-col col-3>
-          {{list.quest_waktu_target}}
-      </ion-col>
-    </ion-row>
-    
-  </ion-card>
-  <ion-item>
-      <button ion-button color="primary" block navPop>Back</button>
-  </ion-item>
+  <ion-tabs>
+    <ion-tab [root]="tab1Root" tabTitle='Main' tabIcon='star'>
+      
+    </ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle='Side' tabIcon='star'>
+
+    </ion-tab>
+  </ion-tabs>
+  
 </ion-content>

@@ -29,6 +29,7 @@ export class CreateTaskPage {
   }
 
   ionViewDidLoad() {
+    console.log("semua data " ,this.navParams.data)
     this.userlist = this.allForm.user_check;
     this.gayapick = this.allForm.gaya;
 
