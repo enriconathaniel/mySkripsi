@@ -11,5 +11,22 @@
 
 
 <ion-content padding>
+  <ion-card *ngFor="let list of questlist" [ngClass]="list.status == 'Belum selesai'? 'card-1':'card-2'" >
+      <ion-row text-right>
+          {{list.deskripsi}}
+      </ion-row>
+      <ion-row text-right>
+        <ion-col>
+          Reward Point : {{list.point}}
+        </ion-col>
+        <ion-col>
+          Reward EXP : {{list.exp}}
+        </ion-col>
+      </ion-row>
+      
+    </ion-card>
+    <ion-item>
+        <button ion-button color="primary" block navPop>Back</button>
+    </ion-item>
   
 </ion-content>

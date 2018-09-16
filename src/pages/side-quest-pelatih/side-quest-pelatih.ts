@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../service/AuthService';
+import { Http } from '../../../node_modules/@angular/http';
+import { WebService } from '../../service/WebService';
 
 /**
  * Generated class for the SideQuestPelatihPage page.
@@ -14,12 +17,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'side-quest-pelatih.html',
 })
 export class SideQuestPelatihPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  questlist:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public http: Http, public webService: WebService, public authService: AuthService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SideQuestPelatihPage');
+
+    let req = {
+      'id' : this.authService.id
+    }
+
+    this.webService.post(this.webService.url + "get_side_quest.php", JSON.stringify(req), null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+      if(responseData){
+        console.log(JSON.stringify(responseData))
+        
+        this.questlist = responseData;
+        //console.log(this.classInfo);
+      }
+    }, error =>{
+    })
   }
 
 }
