@@ -1,3 +1,96 @@
 page-profil-atlet {
-
-}
+    ion-content {
+      display: flex;
+    }
+    h1,
+    h2,
+    h3,
+    p {
+      color: white;
+      font-weight: 300;
+    }
+    .profil-container {
+      padding: 10px;
+      width: 100%;
+      background-image: linear-gradient(
+        to bottom right,
+        map-get($colors, primary),
+        map-get($colors, secondary)
+      );
+      display: flex;
+      height: 100%;
+      // height: 500px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .dp-container {
+      width: 120px;
+      height: auto;
+      border-radius: 60px;
+    }
+    .card {
+      display: flex;
+      height: 60px;
+      background: linear-gradient(
+        to bottom right,
+        map-get($colors, primary),
+        map-get($colors, secondary)
+      );
+      padding-left: 15px;
+      border: 1px map-get($colors, primary) solid;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    .list {
+      background: white;
+      display: flex;
+      flex: 1;
+      height: 100%;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .centering {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: flex-end;
+      flex-direction: column;
+      padding: 10px;
+    }
+    .nama {
+      font-weight: 200;
+      font-size: 16px;
+    }
+  
+    .nama-container {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 10px;
+    }
+    #progressbar {
+      border: 1px solid white;
+      background-color: transparent;
+      border-radius: 13px;
+      /* (height of inner div) / 2 + padding */
+      padding: 3px;
+      width: 100%;
+      height: 27px;
+    }
+  
+    #progressbar > div {
+      background-color: map-get($colors, light);
+      /* Adjust with JavaScript */
+      height: 20px;
+      border-radius: 10px;
+    }
+  
+    h3,
+    p {
+      margin: 5px;
+      padding: 0px;
+    }
+  }

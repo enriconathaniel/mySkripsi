@@ -13,25 +13,22 @@
   
   <ion-content>
     <div *ngIf="!rolevalid">
-      <ion-card *ngFor="let list of questlist" >
-        <ion-row text-right>
-          <ion-col>
-              {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
-          </ion-col>
-          <ion-col>
-              {{list.quest_waktu_target}}
-          </ion-col>
-        </ion-row>
-        <ion-row text-right>
-          <ion-col>
-            Reward Point : {{list.point}}
-          </ion-col>
-          <ion-col>
-            Reward EXP : {{list.exp}}
-          </ion-col>
-        </ion-row>
-        
-      </ion-card>
+      <div class="card-11" *ngFor="let list of questlist">
+          <div class="list-1 card-1">
+            <h2>
+                {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
+            </h2>
+            <h3>Target Waktu: {{list.quest_waktu_target}}</h3>
+            <div class="rowed">
+              <div>
+                <p>Reward Point : <span class="small-font">{{list.point}}</span></p>
+              </div>
+              <div>
+                <p>Reward EXP : <span class="small-font">{{list.exp}}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
   </div>
 
     <div *ngIf="rolevalid">
@@ -56,7 +53,5 @@
         </div>
       </div>
 
-    <ion-item>
-        <button ion-button color="primary" block navPop>Back</button>
-    </ion-item>
+        <button outline round ion-button color="primary" block navPop>Back</button>
   </ion-content>

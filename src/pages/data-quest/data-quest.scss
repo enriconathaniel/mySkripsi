@@ -1,3 +1,52 @@
 page-data-quest {
-
+    .card {
+        display: flex;
+        background: linear-gradient(
+          to bottom right,
+          map-get($colors, primary),
+          map-get($colors, secondary)
+        );
+        padding-left: 15px;
+        border: 1px map-get($colors, primary) solid;
+        border-radius: 10px;
+        margin: 5px;
+      }
+      .list {
+        background: white;
+        display: flex;
+        flex: 1;
+        height: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        flex-direction: column;
+      }
+    
+      .card-1 {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: white;
+        padding: 5px;
+      }
+      .card-2 {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: #b2bec3;
+        padding: 5px;
+      }
+      .rowed {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      h2, h3 {
+        font-weight: 300;
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+      }
+      .small-font {
+        font-size: 20px;
+        color: map-get($colors, primary);
+        font-weight: 300;
+      }
 }

@@ -1,3 +1,132 @@
 page-main-quest-pelatih {
+    ion-content {
+        display: flex;
+        background-image: linear-gradient(
+          to bottom right,
+          map-get($colors, light),
+          map-get($colors, light)
+        );
+      }
+      .card {
+        display: flex;
+        height: 80px;
+        background: linear-gradient(
+          to bottom right,
+          map-get($colors, primary),
+          map-get($colors, secondary)
+        );
+        padding-left: 15px;
+        border: 1px map-get($colors, primary) solid;
+        border-radius: 10px;
+        margin: 5px;
+      }
+      .list {
+        background: white;
+        display: flex;
+        flex: 1;
+        height: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      .tanggal {
+        font-weight: 200;
+        color: map-get($colors, secondary);
+        font-size: 32px;
+      }
+      .bulan-tahun {
+        font-weight: 300;
+        font-size: 16px;
+      }
+      .gaya {
+        font-size: 24px;
+        font-weight: 300;
+        color: grey;
+      }
+      .waktu {
+        font-size: 20px;
+        font-weight: 200;
+      }
+      .date-container {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .centering {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+        padding: 10px;
+      }
+      .nama {
+        font-weight: 200;
+        font-size: 24px;
+      }
+      .rank {
+        font-weight: 300;
+        font-size: 20px;
+        color: map-get($colors, primary);
+      }
+      .nama-container {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 10px;
+      }
 
+      .card-11 {
+        display: flex;
+        background: linear-gradient(
+          to bottom right,
+          map-get($colors, primary),
+          map-get($colors, secondary)
+        );
+        padding-left: 15px;
+        border: 1px map-get($colors, primary) solid;
+        border-radius: 10px;
+        margin: 5px;
+      }
+      .list-1 {
+        background: white;
+        display: flex;
+        flex: 1;
+        height: 100%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        flex-direction: column;
+      }
+    
+      .card-1 {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: white;
+        padding: 5px;
+      }
+      .card-2 {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: #b2bec3;
+        padding: 5px;
+      }
+      .rowed {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      h2, h3 {
+        font-weight: 300;
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+      }
+      .small-font {
+        font-size: 20px;
+        color: map-get($colors, primary);
+        font-weight: 300;
+      }
 }

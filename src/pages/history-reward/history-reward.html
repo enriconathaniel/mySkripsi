@@ -7,28 +7,29 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>historyRewardPage</ion-title>
+    <ion-title>History Reward</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <ion-grid>
-
-    <ion-row *ngFor="let list of rewardlist, let i=index">
-      <ion-col>
-        {{i+1}}
-      </ion-col>
-      <ion-col>
-        {{list.nama}}
-      </ion-col>
-      
-      <ion-col>
-        {{list.tanggal}}
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
+<ion-content >
+    <div class="card" *ngFor="let list of rewardlist, let i=index">
+        <div class="list">
+          <div class="nama-container" style="flex:0.5">
+            <div class="rank">
+              {{i+1}}
+            </div>
+          </div>
+          <div class="nama-container" style="flex:4">
+            <div class="nama">
+              {{list.nama}}
+            </div>
+          </div>
+          <div class="centering">
+              {{list.tanggal}}
+           </div>
+        </div>
+      </div>
 
 </ion-content>

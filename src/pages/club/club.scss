@@ -10,7 +10,8 @@ page-club {
       font-weight: 300;
     }
     .profil-container {
-      height: 280px;
+      min-height: 50%;
+      max-height:100%;
       width: 100%;
       background-image: linear-gradient(
         to bottom right,
