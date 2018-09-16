@@ -15,12 +15,18 @@
     <ion-card *ngFor="let list of questlist">
       <ion-row text-right>
         <ion-col>
-        </ion-col>
-        <ion-col col-4>
             {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
         </ion-col>
-        <ion-col col-3>
+        <ion-col>
             {{list.quest_waktu_target}}
+        </ion-col>
+      </ion-row>
+      <ion-row text-right>
+        <ion-col>
+          Reward Point : {{list.point}}
+        </ion-col>
+        <ion-col>
+          Reward EXP : {{list.exp}}
         </ion-col>
       </ion-row>
       
