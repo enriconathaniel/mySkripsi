@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { WebService } from '../../service/WebService';
 import { AddRewardPage } from '../add-reward/add-reward';
@@ -39,7 +39,8 @@ export class RewardAtletPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public http: Http, public webService: WebService, public authService: AuthService ) {
+    public http: Http, public webService: WebService, public authService: AuthService,
+    public alertCtrl: AlertController ) {
       this.addreward = AddRewardPage;
       this.historyreward = HistoryRewardPage;
   }
@@ -51,6 +52,10 @@ export class RewardAtletPage {
       this.rolevalid = true ;
     } else this.rolevalid = false;
     
+    
+
+  }
+  ionViewWillEnter(){
     let req = {
       'id' : this.authService.id
     }
@@ -82,7 +87,6 @@ export class RewardAtletPage {
       }
     }, error =>{
     })
-
   }
 
   addReward(id_reward){
@@ -101,49 +105,69 @@ export class RewardAtletPage {
       }
       
       console.log("update req ",req_update)
-
-
-      this.webService.post("http://localhost:8080/api_skripsi/update_atlet_reward.php", JSON.stringify(req_update), null).subscribe(response => {
-        console.log(response,'<<<<<<<<<');
-        let responseData = JSON.parse(response["_body"]);
-        console.log(responseData,'responsedata 1');
-        if(responseData['insert']){
-          
-          let req_history = {
-            'id_user' : this.authService.id,
-            'id_reward': idreward
-          }
-          console.log("cek_histori",req_history)
-          this.webService.post("http://localhost:8080/api_skripsi/add_history_reward.php", JSON.stringify(req_history), null).subscribe(response => {
-            console.log(response,'<<<<<<<<<');
-            let responseData = JSON.parse(response["_body"]);
-            console.log(responseData)
-            if(responseData['insert']){
-              // let x = this.AuthService.signup(
-              //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
-              //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
-              //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
-              // );
-              //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
-
-              this.navCtrl.popTo(RewardAtletPage);
+      let alert = this.alertCtrl.create({
+        title: 'Confirm purchase',
+        message: 'Apakah anda akan membeli ini?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
             }
-          }, error =>{
-          })
+          },
+          {
+            text: 'Beli',
+            handler: () => {
+              
+              this.webService.post("http://localhost:8080/api_skripsi/update_atlet_reward.php", JSON.stringify(req_update), null).subscribe(response => {
+                console.log(response,'<<<<<<<<<');
+                let responseData = JSON.parse(response["_body"]);
+                console.log(responseData,'responsedata 1');
+                if(responseData['insert']){
+                  
+                  let req_history = {
+                    'id_user' : this.authService.id,
+                    'id_reward': idreward
+                  }
+                  console.log("cek_histori",req_history)
+                  this.webService.post("http://localhost:8080/api_skripsi/add_history_reward.php", JSON.stringify(req_history), null).subscribe(response => {
+                    console.log(response,'<<<<<<<<<');
+                    let responseData = JSON.parse(response["_body"]);
+                    console.log(responseData)
+                    if(responseData['insert']){
+                      this.navCtrl.popTo(RewardAtletPage);
+                    }
+                  }, error =>{
+                  })
+                }
+              }, error =>{
+              })
 
-          
-        }
-      }, error =>{
-      })
+            }
+          }
+        ]
+      });
+      alert.present();
+      
+        
 
     }
     else if((pointatlet - rewardharga) < 0){
-      console.log("kurangduitnyaaa")
+      let alert = this.alertCtrl.create({
+        title: 'Point Kurang',
+        subTitle: 'Point anda tidak cukup',
+        buttons: [
+          {
+            text: 'Ok',
+            handler: data => {
+              
+            }
+          }
+        ]
+      });
+      alert.present();
     }
-
-    
-
-
   }
 
   onDelete(id_barang){
@@ -151,18 +175,67 @@ export class RewardAtletPage {
       'id' : id_barang
     }
 
-    console.log(req);
-    this.webService.post(this.webService.url + "delete_data_barang.php", JSON.stringify(req), null).subscribe(response => {
-      //console.log(response["_body"]);
-      let responseData = JSON.parse(response["_body"]);
-      if(responseData['success']){
-        console.log("cek hapus")
-      
-        this.navCtrl.popTo(RewardAtletPage);
-        //console.log(this.classInfo);
-      }
-    }, error =>{
-    })
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Delete',
+      message: 'Yakin anda akan menghapus data ini?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Hapus',
+          handler: () => {
+            
+            console.log(req);
+            this.webService.post(this.webService.url + "delete_data_barang.php", JSON.stringify(req), null).subscribe(response => {
+              //console.log(response["_body"]);
+              let responseData = JSON.parse(response["_body"]);
+              if(responseData['success']){
+                console.log("cek hapus")
+              
+                this.navCtrl.popTo(RewardAtletPage);
+                //console.log(this.classInfo);
+              }
+            }, error =>{
+            })
+
+          }
+        }
+      ]
+    });
+    alert.present();
+    
+
+
+
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm purchase',
+      message: 'Do you want to buy this book?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Buy',
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

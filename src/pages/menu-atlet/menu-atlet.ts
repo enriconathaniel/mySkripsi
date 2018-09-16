@@ -45,5 +45,22 @@ export class MenuAtletPage {
     console.log('ionViewDidLoad MenuAtletPage');
     console.log("role",this.authService.role);
   }
+  ionViewWillEnter(){
+    console.log('cek will enter')
+    let req = {
+      'id' : this.authService.id
+    }
+    this.webService.post(this.webService.url + "check_side_quest.php", JSON.stringify(req), null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+    }, error =>{
+    })
+
+    this.webService.post(this.webService.url + "check_main_quest.php", JSON.stringify(req), null).subscribe(response => {
+      //console.log(response["_body"]);
+      let responseData = JSON.parse(response["_body"]);
+    }, error =>{
+    })
+  }
 
 }

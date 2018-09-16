@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '../../../node_modules/@angular/forms';
 import { WebService } from '../../service/WebService';
 import { HistoryAtletPage } from '../history-atlet/history-atlet';
@@ -23,13 +23,14 @@ export class CreateTaskPage {
   userlist: any;
   gayapick:any;
   addtask: FormArray;
-  
+  loading: any;
   arrmenit:any =[];
   arrdetik:any = [];
   arrmilisecond:any=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private builder: FormBuilder, private webService: WebService) {
+    private builder: FormBuilder, private webService: WebService,
+    private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -94,7 +95,7 @@ export class CreateTaskPage {
     console.log("waktu atlet >>>", this.createTaskForm.value.waktuRenangAtlet[0].namaAtlit)
     console.log(this.createTaskForm, "<<<cekdatamasukga")
     let thisForm = this.createTaskForm.value;
-
+    this.presentLoading();
     for(let i = 0; i < this.userlist.length; i++){
       
       let req = {
@@ -112,7 +113,7 @@ export class CreateTaskPage {
         let responseData = JSON.parse(response["_body"]);
         console.log(responseData)
         if(responseData['insert']){
-          this.navCtrl.popTo(HistoryAtletPage);
+          
 
           let req2 = {
             "id_user" : this.createTaskForm.value.waktuRenangAtlet[i].idAtlit
@@ -133,10 +134,27 @@ export class CreateTaskPage {
       
 
     } 
-
     
+    this.dismissLoading();
+    const startIndex = this.navCtrl.getActive().index - 1;
+    this.navCtrl.remove(startIndex, 2).then(() => {
+      this.navCtrl.push(HistoryAtletPage);
+    });
+  }
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
 
-    
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
   }
 
 }

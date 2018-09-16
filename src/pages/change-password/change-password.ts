@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { FormGroup } from '@angular/forms/src/model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { WebService } from '../../service/WebService';
@@ -20,8 +20,10 @@ import { AuthService } from '../../service/AuthService';
 })
 export class ChangePasswordPage {
   changePasswordForm: FormGroup;
+  loading:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private builder: FormBuilder, private webService : WebService,public authService: AuthService) {
+    private builder: FormBuilder, private webService : WebService,public authService: AuthService,
+    private loadingCtrl: LoadingController, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -65,6 +67,7 @@ export class ChangePasswordPage {
       "password" : thisForm.old_password
     }
     console.log(req_password)
+    this.presentLoading();
     this.webService.post("http://localhost:8080/api_skripsi/get_check_oldpassword.php", JSON.stringify(req_password), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
@@ -93,15 +96,41 @@ export class ChangePasswordPage {
 
 
       }
+      else{
+        
+        let alert = this.alertCtrl.create({
+          title: 'Password Salah',
+          subTitle: 'Password lama anda salah',
+          buttons: [
+            {
+              text: 'Ok',
+              handler: data => {
+                
+              }
+            }
+          ]
+        });
+        alert.present();
+      }
     }, error =>{
     })
+    this.dismissLoading();
+  }
 
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
 
+    this.loading.present();
 
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
 
-    
-
-
+  dismissLoading(){
+    this.loading.dismiss();
   }
 
 }

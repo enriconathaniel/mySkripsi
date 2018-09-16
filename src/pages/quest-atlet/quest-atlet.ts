@@ -40,6 +40,8 @@ export class QuestAtletPage {
     } else this.rolevalid = false;
     console.log('ionViewDidLoad QuestAtletPage');
 
+    
+
   }
 
 }

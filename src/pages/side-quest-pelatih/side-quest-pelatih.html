@@ -7,26 +7,49 @@
 <ion-header>
 
 
-</ion-header>
-
-
-<ion-content padding>
-  <ion-card *ngFor="let list of questlist" [ngClass]="list.status == 'Belum selesai'? 'card-1':'card-2'" >
-      <ion-row text-right>
+  </ion-header>
+  
+  
+  <ion-content>
+  
+    <div class="card" *ngFor="let list of questlist">
+      <div class="list" [ngClass]="list.status == 'Belum selesai'? 'card-1':'card-2'">
+        <h2>
           {{list.deskripsi}}
-      </ion-row>
-      <ion-row text-right>
-        <ion-col>
-          Reward Point : {{list.point}}
-        </ion-col>
-        <ion-col>
-          Reward EXP : {{list.exp}}
-        </ion-col>
-      </ion-row>
-      
-    </ion-card>
-    <ion-item>
-        <button ion-button color="primary" block navPop>Back</button>
+        </h2>
+        <div class="rowed">
+          <div>
+            <p>Reward Point : <span class="small-font">{{list.point}}</span></p>
+          </div>
+          <div>
+            <p>Reward EXP : <span class="small-font">{{list.exp}}</span></p>
+  
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    <h3 style="padding-left:10px">Done</h3>
+    <div class="card" *ngFor="let list of doneQuestList">
+      <div class="list" [ngClass]="list.status == 'Belum selesai'? 'card-1':'card-2'">
+        <h2>
+          {{list.deskripsi}}
+        </h2>
+        <div class="rowed">
+          <div>
+            <p>Reward Point : <span class="small-font">{{list.point}}</span></p>
+          </div>
+          <div>
+            <p>Reward EXP : <span class="small-font">{{list.exp}}</span></p>
+  
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    <ion-item no-lines>
+      <button ion-button color="primary" round outline block navPop>Back</button>
     </ion-item>
   
-</ion-content>
+  
+  </ion-content>
