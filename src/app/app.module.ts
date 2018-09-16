@@ -40,6 +40,7 @@ import { MenuPelatihPage } from '../pages/menu-pelatih/menu-pelatih';
 import { HasilLatihanPage } from '../pages/hasil-latihan/hasil-latihan';
 import { LeaderboardExpPage } from '../pages/leaderboard-exp/leaderboard-exp';
 import { LeaderboardPointPage } from '../pages/leaderboard-point/leaderboard-point';
+import { DataQuestPage } from '../pages/data-quest/data-quest';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { LeaderboardPointPage } from '../pages/leaderboard-point/leaderboard-poi
     MenuPelatihPage,
     HasilLatihanPage,
     LeaderboardExpPage,
-    LeaderboardPointPage
+    LeaderboardPointPage,
+    DataQuestPage
     
   ],
   imports: [
@@ -105,7 +107,8 @@ import { LeaderboardPointPage } from '../pages/leaderboard-point/leaderboard-poi
     MenuPelatihPage,
     HasilLatihanPage,
     LeaderboardExpPage,
-    LeaderboardPointPage
+    LeaderboardPointPage,
+    DataQuestPage
     
   ],
   providers: [

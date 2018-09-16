@@ -11,26 +11,51 @@
   </ion-header>
   
   
-  <ion-content padding>
-    <ion-card *ngFor="let list of questlist">
-      <ion-row text-right>
-        <ion-col>
-            {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
-        </ion-col>
-        <ion-col>
-            {{list.quest_waktu_target}}
-        </ion-col>
-      </ion-row>
-      <ion-row text-right>
-        <ion-col>
-          Reward Point : {{list.point}}
-        </ion-col>
-        <ion-col>
-          Reward EXP : {{list.exp}}
-        </ion-col>
-      </ion-row>
-      
-    </ion-card>
+  <ion-content>
+    <div *ngIf="!rolevalid">
+      <ion-card *ngFor="let list of questlist" >
+        <ion-row text-right>
+          <ion-col>
+              {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
+          </ion-col>
+          <ion-col>
+              {{list.quest_waktu_target}}
+          </ion-col>
+        </ion-row>
+        <ion-row text-right>
+          <ion-col>
+            Reward Point : {{list.point}}
+          </ion-col>
+          <ion-col>
+            Reward EXP : {{list.exp}}
+          </ion-col>
+        </ion-row>
+        
+      </ion-card>
+  </div>
+
+    <div *ngIf="rolevalid">
+        <div class="card" *ngFor="let atlet of userlist index as i">
+          <div class="list" (click)="infoatlet(atlet.id)">
+            <div class="nama-container" style="flex:0.5">
+              <div class="rank">
+                {{i+1}}
+              </div>
+            </div>
+            <div class="nama-container" style="flex:3">
+              <div class="nama">
+                {{atlet.nama}}
+              </div>
+            </div>
+            <div class="centering" style="flex:3">
+              <button ion-button icon-start clear item-end>
+                <ion-icon name="list-box"></ion-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <ion-item>
         <button ion-button color="primary" block navPop>Back</button>
     </ion-item>

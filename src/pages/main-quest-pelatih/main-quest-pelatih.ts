@@ -4,6 +4,7 @@ import { AddQuestPelatihPage } from '../add-quest-pelatih/add-quest-pelatih';
 import { Http } from '../../../node_modules/@angular/http';
 import { WebService } from '../../service/WebService';
 import { AuthService } from '../../service/AuthService';
+import { DataQuestPage } from '../data-quest/data-quest';
 
 /**
  * Generated class for the MainQuestPelatihPage page.
@@ -22,7 +23,7 @@ export class MainQuestPelatihPage {
   addQuestPage:any;
   role:any;
   rolevalid:any;
-
+  userlist:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: Http, public webService: WebService, public authService: AuthService) {
     this.addQuestPage = AddQuestPelatihPage;
@@ -51,6 +52,29 @@ export class MainQuestPelatihPage {
     }, error =>{
     })
 
+    this.webService
+      .get(this.webService.url + 'getatletlist.php', null)
+      .subscribe(
+        response => {
+          //console.log(response["_body"]);
+          let responseData = JSON.parse(response['_body']);
+          if (responseData) {
+            // console.log(JSON.stringify(responseData),'ASaas')
+
+            this.userlist = responseData.map(function(element) {
+              element.isChecked = false;
+              return element;
+            });
+            //console.log(this.classInfo);
+          }
+        },
+        error => {},
+      );
+
+  }
+
+  infoatlet(id) {
+    this.navCtrl.push(DataQuestPage, id);
   }
 
 }
