@@ -123,7 +123,7 @@ export class AddQuestPelatihPage {
         "exp" : thisForm.exp
       }
       console.log(req)
-      this.webService.post("http://localhost:8080/api_skripsi/add_main_quest.php", JSON.stringify(req), null).subscribe(response => {
+      this.webService.post(this.webService.url + "add_main_quest.php", JSON.stringify(req), null).subscribe(response => {
         console.log(response,'<<<<<<<<<');
         let responseData = JSON.parse(response["_body"]);
         console.log(responseData)

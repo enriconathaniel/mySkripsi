@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { WebService } from '../../service/WebService';
 import { AuthService } from '../../service/AuthService';
 import { Http } from '@angular/http';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the LeaderboardPointPage page.
@@ -18,13 +19,14 @@ import { Http } from '@angular/http';
 })
 export class LeaderboardPointPage {
   leaderboardpoint:any;
+  loading:any;
   constructor(public navCtrl: NavController, private app:App, public navParams: NavParams, public http: Http
-    ,public webService: WebService, public authService: AuthService) {
+    ,public webService: WebService, public authService: AuthService, private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LeaderboardPointPage');
-
+    this.presentLoading();
     this.webService.get(this.webService.url + "get_leaderboard_point.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
@@ -36,6 +38,23 @@ export class LeaderboardPointPage {
       }
     }, error =>{
     })
+    this.dismissLoading();
+  }
+
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
   }
 
 }

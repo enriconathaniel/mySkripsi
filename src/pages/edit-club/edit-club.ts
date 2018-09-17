@@ -62,7 +62,7 @@ export class EditClubPage {
       "clubinfo" : thisForm.clubinfo
     }
     console.log(req)
-    this.webService.post("http://localhost:8080/api_skripsi/update_info_club.php", JSON.stringify(req), null).subscribe(response => {
+    this.webService.post(this.webService.url + "update_info_club.php", JSON.stringify(req), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)

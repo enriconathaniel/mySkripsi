@@ -108,7 +108,7 @@ export class CreateTaskPage {
       console.log(req)
       
       
-      this.webService.post("http://localhost:8080/api_skripsi/add_history_latihan.php", JSON.stringify(req), null).subscribe(response => {
+      this.webService.post(this.webService.url + "add_history_latihan.php", JSON.stringify(req), null).subscribe(response => {
         console.log(response,'<<<<<<<<<');
         let responseData = JSON.parse(response["_body"]);
         console.log(responseData)
@@ -119,7 +119,7 @@ export class CreateTaskPage {
             "id_user" : this.createTaskForm.value.waktuRenangAtlet[i].idAtlit
           }
 
-          this.webService.post("http://localhost:8080/api_skripsi/update_atlet_latihan.php", JSON.stringify(req2), null).subscribe(response => {
+          this.webService.post(this.webService.url + "update_atlet_latihan.php", JSON.stringify(req2), null).subscribe(response => {
             console.log(response,'<<<<<<<<<');
             let responseData = JSON.parse(response["_body"]);
             console.log(responseData)

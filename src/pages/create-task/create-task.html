@@ -13,47 +13,34 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <form [formGroup]="createTaskForm" (ngSubmit)="onSubmit()">
-    <ion-grid formArrayName="waktuRenangAtlet">
-      <ion-row [formGroupName]="i" *ngFor="let user of userlist; let i=index" >
-          <ion-col>
-            <ion-input formControlName="namaAtlit" readonly value="{{user.nama}}"></ion-input>
-            <ion-input formControlName="idAtlit" hidden value="{{user.id}}"></ion-input>
+    <div class="container" formArrayName="waktuRenangAtlet">
+      <div [ngClass]="i%2==1? 'wrapper-1':'wrapper-2'" [formGroupName]="i" *ngFor="let user of userlist; let i=index">
+        <ion-input formControlName="namaAtlit" readonly value="{{user.nama}}"></ion-input>
+        <ion-input formControlName="idAtlit" hidden value="{{user.id}}"></ion-input>
+        <ion-row>
+          <ion-col col-4>
+            <ion-select placeholder="Menit" formControlName="waktuMenit">
+              <ion-option value="{{list}}" *ngFor="let list of arrmenit">{{list}}</ion-option>
+            </ion-select>
           </ion-col>
-          <ion-col>
-            
-            <!-- <ion-datetime 
-              placeholder="Waktu Atlet" 
-              displayFormat="HH:mm:ss" 
-              pickerFormat="HH mm ss"
-              formControlName="waktuAtlit"
-              >
-            </ion-datetime> -->
-            <div>
-                <ion-item>
-                    <ion-select placeholder="Menit" formControlName="waktuMenit">
-                        <ion-option value="{{list}}" *ngFor="let list of arrmenit">{{list}}</ion-option>
-                    </ion-select>
-                </ion-item>
-                <ion-item>
-                    <ion-select placeholder="detik" formControlName="waktuDetik">
-                        <ion-option value="{{list}}" *ngFor="let list of arrdetik">{{list}}</ion-option>
-                    </ion-select>
-                </ion-item>
-                <ion-item>
-                    <ion-select placeholder="milisecond" formControlName="waktuMilisecond">
-                        <ion-option value="{{list}}" *ngFor="let list of arrmilisecond">{{list}}</ion-option>
-                    </ion-select>
-                </ion-item>
-                  
-              </div>
+          <ion-col col-4>
+            <ion-select placeholder="detik" formControlName="waktuDetik">
+              <ion-option value="{{list}}" *ngFor="let list of arrdetik">{{list}}</ion-option>
+            </ion-select>
           </ion-col>
-      </ion-row>  
-    </ion-grid>  
+          <ion-col col-4>
+            <ion-select placeholder="milisecond" formControlName="waktuMilisecond">
+              <ion-option value="{{list}}" *ngFor="let list of arrmilisecond">{{list}}</ion-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
 
-    <ion-item>
-      <button ion-button color="primary" block>Submit</button>
+    <ion-item no-lines>
+      <button round outline ion-button color="primary" block>Submit</button>
     </ion-item>
   </form>
 </ion-content>

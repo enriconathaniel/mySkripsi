@@ -24,7 +24,7 @@
   <ion-content>
     <div class="container">
       <h1 style="color: #0984e3;" *ngIf="!rolevalid" text-center>
-        Your Point:<span style=" font-weight: 300; font-size: 30">
+        Point Kamu:<span style=" font-weight: 300; font-size: 30">
           {{infoprofile.point}}
         </span>
       </h1>
@@ -53,8 +53,8 @@
   
                     </div>
                   </div>
-                  <div class="centering" style="flex:1">
-                    <button color="light" outline ion-button icon-start clear item-end (click)="onDelete(item.id)">
+                  <div class="centering" style="flex:1" >
+                    <button color="light" *ngIf="rolevalid" outline ion-button icon-start clear item-end (click)="onDelete(item.id)">
                       <ion-icon name="trash"></ion-icon>
                     </button>
                   </div>

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AuthService } from '../../service/AuthService';
 import { WebService } from '../../service/WebService';
 import { Http } from '@angular/http';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the LeaderboardExpPage page.
@@ -18,9 +19,9 @@ import { Http } from '@angular/http';
 })
 export class LeaderboardExpPage {
   leaderboardexp:any;
-
+  loading:any;
   constructor(public navCtrl: NavController, private app:App, public navParams: NavParams, public http: Http
-    ,public webService: WebService, public authService: AuthService) {
+    ,public webService: WebService, public authService: AuthService, private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -38,6 +39,21 @@ export class LeaderboardExpPage {
     }, error =>{
     })
 
+  }
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
   }
 
 }

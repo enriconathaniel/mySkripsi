@@ -8,7 +8,7 @@
 
 <ion-content>
     <div class="card" *ngFor="let rank of leaderboardexp, let i=index">
-      <div class="list" (click)="infoatlet(atlet.id)">
+      <div class="list">
         <div class="nama-container" style="flex:0.5">
           <div class="rank">
             {{i+1}}
@@ -21,7 +21,7 @@
         </div>
         <div class="centering">
           <div class="circle">
-            {{rank.exp}}
+            {{rank.level}}
           </div>
         </div>
       </div>

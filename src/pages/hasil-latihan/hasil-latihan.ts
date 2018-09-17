@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AuthService} from '../../service/AuthService';
 import {WebService} from '../../service/WebService';
 import {Http} from '../../../node_modules/@angular/http';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the HasilLatihanPage page.
@@ -20,13 +21,14 @@ export class HasilLatihanPage {
   idatlet = this.navParams.data;
   listlatihan: any;
   listlatihanlengkap: any;
-
+  loading:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
     public webService: WebService,
     public authService: AuthService,
+    private loadingCtrl: LoadingController
   ) {}
 
   ionViewDidLoad() {
@@ -35,6 +37,7 @@ export class HasilLatihanPage {
     let req = {
       id: this.idatlet,
     };
+    this.presentLoading();
     console.log(req, '<<<<<<<<<>>>>>>>>>', this.idatlet);
     this.webService
       .post(
@@ -99,5 +102,22 @@ export class HasilLatihanPage {
         },
         error => {},
       );
+      this.dismissLoading();
+  }
+
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
   }
 }

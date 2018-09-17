@@ -3,8 +3,8 @@ import { Http, Response, ResponseContentType, Headers, RequestOptions } from '@a
 
 @Injectable()
 export class WebService {
-    url = 'http://localhost:8080/api_skripsi/';
-    //url = 'http://umnspa.janssenrahardja.xyz/umnspa/';
+    // url = 'http://localhost:8080/api_skripsi/';
+    url = 'http://kairoseki.xyz/api_skripsi/';
     
     
     constructor(private http: Http) {

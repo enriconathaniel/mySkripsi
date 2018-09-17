@@ -58,7 +58,7 @@ export class AddRewardPage {
       "id_reward" : this.navParams.data
     }
     console.log(req)
-    this.webService.post("http://localhost:8080/api_skripsi/add_reward_barang.php", JSON.stringify(req), null).subscribe(response => {
+    this.webService.post(this.webService.url + "add_reward_barang.php", JSON.stringify(req), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)

@@ -1,67 +1,66 @@
 page-add-task {
-    ion-content {
-      background-image: linear-gradient(
-        to bottom right,
-        map-get($colors, light),
-        map-get($colors, light)
-      );
-    }
-    .wrapper-1 {
-      background-color: map-get($colors, secondary);
-      padding: 15px;
-      margin-bottom: 10px;
-      margin: 5px;
-      border-radius: 5px;
-    }
-    .wrapper-2 {
-      background-color: map-get($colors, primary);
-      padding: 15px;
-      margin-bottom: 10px;
-      margin: 5px;
-      border-radius: 5px;
-    }
-    ion-checkbox {
-      align-self: center;
-    }
-    ion-select {
-      min-width: 100%;
-    }
-    .label-header {
-      color: white;
-      font-size: 24px;
-      font-weight: 300;
-    }
-    ion-label {
-      // color: black;
-    }
-    ion-item {
-      border-radius: 5px;
-      background-color: #fff;
-      margin: 0px;
-      padding: 0px;
-    }
-    .atlet-container {
-      min-width: 100%;
-      border-radius: 5px;
-      background-color: #fff;
-      padding: 5px 16px;
-    }
-    .container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .btn-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    .list-container {
-      display: flex;
-      flex-direction: row;
-    }
-    .form-container {
-      background: white;
-      padding: 10px;
-    }
+  ion-content {
+    background-image: linear-gradient(
+      to bottom right,
+      map-get($colors, light),
+      map-get($colors, light)
+    );
   }
+  .wrapper-1 {
+    background-color: map-get($colors, secondary);
+    padding: 15px;
+    margin-bottom: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  .wrapper-2 {
+    background-color: map-get($colors, primary);
+    padding: 15px;
+    margin-bottom: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  ion-checkbox {
+    align-self: center;
+  }
+  ion-select {
+    min-width: 100%;
+    padding-left: 9px !important;
+  }
+  .label-header {
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  ion-item {
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0px;
+    padding: 0px;
+  }
+  .atlet-container {
+    min-width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 5px 16px;
+  }
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .list-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .form-container {
+    background: white;
+    padding: 10px;
+  }
+}

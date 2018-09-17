@@ -29,13 +29,21 @@
           Point
         </ion-label>
         <ion-item no-lines>
-          <ion-input type="number" formControlName="point"></ion-input>
+          <ion-select formControlName="point">
+            <ion-option value="100" >100</ion-option>
+            <ion-option value="250" >250</ion-option>
+            <ion-option value="500" >500</ion-option>
+          </ion-select>
         </ion-item>
         <ion-label class="label-header">
           Exp
         </ion-label>
         <ion-item no-lines>
-          <ion-input type="number" formControlName="exp"></ion-input>
+          <ion-select formControlName="exp">
+            <ion-option value="25" >25</ion-option>
+            <ion-option value="50" >50</ion-option>
+            <ion-option value="75" >75</ion-option>
+          </ion-select>
         </ion-item>
         <ion-label class="label-header">
           Target Waktu

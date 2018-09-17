@@ -68,7 +68,7 @@ export class ChangePasswordPage {
     }
     console.log(req_password)
     this.presentLoading();
-    this.webService.post("http://localhost:8080/api_skripsi/get_check_oldpassword.php", JSON.stringify(req_password), null).subscribe(response => {
+    this.webService.post(this.webService.url + "get_check_oldpassword.php", JSON.stringify(req_password), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)
@@ -82,7 +82,7 @@ export class ChangePasswordPage {
           "password" : thisForm.password
         }
         console.log(req)
-        this.webService.post("http://localhost:8080/api_skripsi/update_password.php", JSON.stringify(req), null).subscribe(response => {
+        this.webService.post(this.webService.url + "update_password.php", JSON.stringify(req), null).subscribe(response => {
           console.log(response,'<<<<<<<<<');
           let responseData = JSON.parse(response["_body"]);
           console.log(responseData)

@@ -5,6 +5,7 @@ import {AuthService} from '../../service/AuthService';
 import {WebService} from '../../service/WebService';
 import {Http} from '../../../node_modules/@angular/http';
 import {HasilLatihanPage} from '../hasil-latihan/hasil-latihan';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the HistoryAtletPage page.
@@ -26,13 +27,14 @@ export class HistoryAtletPage {
   listlatihan: any;
   listlatihanlengkap: any;
   userlist: any;
-
+  loading:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
     public webService: WebService,
     public authService: AuthService,
+    private loadingCtrl: LoadingController
   ) {
     this.addTaskPage = AddTaskPage;
   }
@@ -43,7 +45,7 @@ export class HistoryAtletPage {
     if (this.role == 'pelatih') {
       this.rolevalid = true;
     } else this.rolevalid = false;
-
+    this.presentLoading();
     let req = {
       id: this.authService.id,
     };
@@ -130,9 +132,26 @@ export class HistoryAtletPage {
         },
         error => {},
       );
+      this.dismissLoading();
   }
 
   infoatlet(id) {
     this.navCtrl.push(HasilLatihanPage, id);
+  }
+  
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
   }
 }

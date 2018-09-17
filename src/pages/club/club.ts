@@ -6,6 +6,8 @@ import { EditClubPage } from '../edit-club/edit-club';
 import { AtletDataPage } from '../atlet-data/atlet-data';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../service/AuthService';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { HasilLatihanPage } from '../hasil-latihan/hasil-latihan';
 
 
 /**
@@ -25,19 +27,24 @@ export class ClubPage {
   infoclub:any;
   role:any;
   rolevalid:any;
+  loading:any;
 
   constructor(public navCtrl: NavController, private app:App, public navParams: NavParams, public http: Http
-    ,public webService: WebService, public authService: AuthService) {
+    ,public webService: WebService, public authService: AuthService, private loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClubPage');
+    
+  }
+
+  ionViewWillEnter(){
     this.role = this.authService.role;
 
     if(this.role == 'pelatih'){
       this.rolevalid = true ;
     } else this.rolevalid = false;
-
+    this.presentLoading();
     this.webService.get(this.webService.url + "getclub.php", null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
@@ -64,7 +71,7 @@ export class ClubPage {
       }
     }, error =>{
     })
-
+    this.dismissLoading();
   }
 
   edit(){
@@ -72,7 +79,7 @@ export class ClubPage {
   }
 
   infoatlet(id){
-    this.navCtrl.push(AtletDataPage,id);
+    this.navCtrl.push(HasilLatihanPage,id);
 
   }
 
@@ -83,4 +90,19 @@ export class ClubPage {
     });
   }
 
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
+  }
 }

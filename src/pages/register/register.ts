@@ -65,7 +65,7 @@ export class RegisterPage {
       "password" : thisForm.password
     }
     console.log(req)
-    this.webService.post("http://localhost:8080/api_skripsi/register.php", JSON.stringify(req), null).subscribe(response => {
+    this.webService.post(this.webService.url + "register.php", JSON.stringify(req), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)

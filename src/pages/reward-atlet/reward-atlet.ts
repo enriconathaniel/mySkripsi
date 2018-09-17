@@ -5,6 +5,7 @@ import { WebService } from '../../service/WebService';
 import { AddRewardPage } from '../add-reward/add-reward';
 import { AuthService } from '../../service/AuthService';
 import { HistoryRewardPage } from '../history-reward/history-reward';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the RewardAtletPage page.
@@ -28,6 +29,7 @@ export class RewardAtletPage {
   arrgold:any = [];
   arrsilver:any = [];
   arrbronze:any = [];
+  loading:any;
   infoprofile = {
     id: "",
     nama: "",
@@ -40,7 +42,7 @@ export class RewardAtletPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: Http, public webService: WebService, public authService: AuthService,
-    public alertCtrl: AlertController ) {
+    public alertCtrl: AlertController, private loadingCtrl: LoadingController ) {
       this.addreward = AddRewardPage;
       this.historyreward = HistoryRewardPage;
   }
@@ -59,7 +61,7 @@ export class RewardAtletPage {
     let req = {
       'id' : this.authService.id
     }
-
+    this.presentLoading();
     console.log('ionViewDidLoad ProfilAtletPage');
     this.webService.post(this.webService.url + "getprofile.php", JSON.stringify(req), null).subscribe(response => {
       //console.log(response["_body"]);
@@ -87,6 +89,8 @@ export class RewardAtletPage {
       }
     }, error =>{
     })
+
+    this.dismissLoading();
   }
 
   addReward(id_reward){
@@ -120,7 +124,7 @@ export class RewardAtletPage {
             text: 'Beli',
             handler: () => {
               
-              this.webService.post("http://localhost:8080/api_skripsi/update_atlet_reward.php", JSON.stringify(req_update), null).subscribe(response => {
+              this.webService.post(this.webService.url + "update_atlet_reward.php", JSON.stringify(req_update), null).subscribe(response => {
                 console.log(response,'<<<<<<<<<');
                 let responseData = JSON.parse(response["_body"]);
                 console.log(responseData,'responsedata 1');
@@ -131,7 +135,7 @@ export class RewardAtletPage {
                     'id_reward': idreward
                   }
                   console.log("cek_histori",req_history)
-                  this.webService.post("http://localhost:8080/api_skripsi/add_history_reward.php", JSON.stringify(req_history), null).subscribe(response => {
+                  this.webService.post(this.webService.url + "add_history_reward.php", JSON.stringify(req_history), null).subscribe(response => {
                     console.log(response,'<<<<<<<<<');
                     let responseData = JSON.parse(response["_body"]);
                     console.log(responseData)
@@ -238,4 +242,19 @@ export class RewardAtletPage {
     alert.present();
   }
 
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
+  }
 }

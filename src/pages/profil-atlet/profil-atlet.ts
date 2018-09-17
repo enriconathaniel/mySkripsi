@@ -5,6 +5,7 @@ import {Http, HttpModule} from '@angular/http';
 import {WebService} from '../../service/WebService';
 import {AuthService} from '../../service/AuthService';
 import {HomePage} from '../home/home';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 /**
  * Generated class for the ProfilAtletPage page.
  *
@@ -20,7 +21,7 @@ import {HomePage} from '../home/home';
 export class ProfilAtletPage {
   changePassword: any;
   //infoprofile:any;
-
+  loading:any;
   infoprofile = {
     id: '',
     nama: '',
@@ -42,6 +43,7 @@ export class ProfilAtletPage {
     public http: Http,
     public webService: WebService,
     public authService: AuthService,
+    public loadingCtrl: LoadingController
   ) {
     this.changePassword = ChangePasswordPage;
 
@@ -54,7 +56,7 @@ export class ProfilAtletPage {
     let req = {
       id: this.authService.id,
     };
-
+    this.presentLoading();
     console.log('ionViewDidLoad ProfilAtletPage');
     this.webService
       .post(this.webService.url + 'getprofile.php', JSON.stringify(req), null)
@@ -76,6 +78,7 @@ export class ProfilAtletPage {
         },
         error => {},
       );
+      this.dismissLoading();
   }
 
   logout() {
@@ -83,5 +86,21 @@ export class ProfilAtletPage {
       //set root
       this.app.getRootNav().setRoot(HomePage);
     });
+  }
+
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
   }
 }
