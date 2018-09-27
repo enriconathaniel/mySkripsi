@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '../../../node_modules/@angular/forms';
 import { WebService } from '../../service/WebService';
 import { LoginAtletPage } from '../login-atlet/login-atlet';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 /**
  * Generated class for the RegisterPage page.
@@ -18,9 +20,11 @@ import { LoginAtletPage } from '../login-atlet/login-atlet';
 })
 export class RegisterPage {
   RegisterForm: FormGroup;
+  loading:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private builder: FormBuilder, private webService : WebService) {
+    private builder: FormBuilder, private webService : WebService,
+    public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -65,22 +69,47 @@ export class RegisterPage {
       "password" : thisForm.password
     }
     console.log(req)
+    this.presentLoading();
     this.webService.post(this.webService.url + "register.php", JSON.stringify(req), null).subscribe(response => {
       console.log(response,'<<<<<<<<<');
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)
       if(responseData['success']){
-        // let x = this.AuthService.signup(
-        //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
-        //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
-        //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
-        // );
-        //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
+        let alert = this.alertCtrl.create({
+          title: 'Success',
+          subTitle: 'Daftar anggota baru telah berhasil, silahkan login',
+          buttons: [
+            {
+              text: 'Ok',
+              handler: data => {
+                
+              }
+            }
+          ]
+        });
+        alert.present();
         this.navCtrl.popTo(LoginAtletPage);
+
       }
     }, error =>{
     })
+    this.dismissLoading();
   }
 
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
+  }
 
 }

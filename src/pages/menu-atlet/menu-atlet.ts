@@ -9,6 +9,7 @@ import { RewardAtletPage } from '../reward-atlet/reward-atlet';
 import { Http } from '../../../node_modules/@angular/http';
 import { WebService } from '../../service/WebService';
 import { AuthService } from '../../service/AuthService';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the MenuAtletPage page.
@@ -29,9 +30,11 @@ export class MenuAtletPage {
   historyPage:any;
   leaderboardPage:any;
   rewardPage:any;
+  loading:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http
-    ,public webService: WebService, public authService: AuthService) {
+    ,public webService: WebService, public authService: AuthService,
+      public loadingCtrl: LoadingController) {
     this.profilePage = ProfilAtletPage;
     this.clubPage = ClubPage;
     this.questPage = QuestAtletPage;
@@ -50,6 +53,7 @@ export class MenuAtletPage {
     let req = {
       'id' : this.authService.id
     }
+    this.presentLoading();
     this.webService.post(this.webService.url + "check_side_quest.php", JSON.stringify(req), null).subscribe(response => {
       //console.log(response["_body"]);
       let responseData = JSON.parse(response["_body"]);
@@ -61,6 +65,22 @@ export class MenuAtletPage {
       let responseData = JSON.parse(response["_body"]);
     }, error =>{
     })
+    this.dismissLoading();
   }
 
+  presentLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
+  dismissLoading(){
+    this.loading.dismiss();
+  }
 }

@@ -6,7 +6,7 @@
 -->
 <ion-header>
     <ion-navbar>
-      <ion-title>Club</ion-title>
+      <ion-title text-left ><img src="../../assets/imgs/piranhapjg.png"  height="40px"></ion-title>
     </ion-navbar>
   </ion-header>
   <ion-content>
@@ -23,7 +23,7 @@
     </div>
   
   
-    <div *ngIf="rolevalid">
+    <div >
       <div class="card" *ngFor="let atlet of userlist index as i">
         <div class="list" (click)="infoatlet(atlet.id)">
           <div class="nama-container" style="flex:1">
@@ -31,7 +31,7 @@
               {{atlet.nama}}
             </div>
           </div>
-          <div class="centering" style="flex:1">
+          <div class="centering" style="flex:1" *ngIf="rolevalid">
             <button ion-button icon-start clear item-end>
               <ion-icon name="list-box"></ion-icon>
             </button>

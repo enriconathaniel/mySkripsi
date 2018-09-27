@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Profil</ion-title>
+    <ion-title text-left ><img src="../../assets/imgs/piranhapjg.png"  height="40px"></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,6 +15,11 @@
 
 <ion-content>
   <div class="profil-container">
+    <div style="display:flex; align-self:flex-end; margin-right:5px">
+      <button ion-button outline round color="light" icon-end item-end (click)="edit()">
+        edit
+      </button>
+    </div>
     <img class="dp-container" src="../../assets/imgs/piranha.png" />
     <h3>{{infoprofile.nama}}</h3>
     <p>{{infoprofile.email}}</p>

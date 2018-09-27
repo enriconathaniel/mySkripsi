@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>History</ion-title>
+    <ion-title text-left ><img src="../../assets/imgs/piranhapjg.png"  height="40px"></ion-title>
     <ion-buttons end *ngIf="rolevalid">
       <button ion-button icon-only [navPush]="addTaskPage">
         <ion-icon name="add"></ion-icon>
@@ -26,12 +26,12 @@
             {{i+1}}
           </div>
         </div>
-        <div class="nama-container" style="flex:3">
+        <div class="nama-container" style="flex:4">
           <div class="nama">
             {{atlet.nama}}
           </div>
         </div>
-        <div class="centering" style="flex:3">
+        <div class="centering" style="flex:2">
           <button ion-button icon-start clear item-end>
             <ion-icon name="list-box"></ion-icon>
           </button>
@@ -53,7 +53,7 @@
             {{list.year}}
           </div>
         </div>
-        <div class="centering" style="flex:3">
+        <div class="centering" style="flex:3" text-right>
           <div class="gaya">{{list.jarak}}m - Gaya {{list.nama_gaya}}</div>
           <div class="waktu">
             <ion-icon name="time"></ion-icon>

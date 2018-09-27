@@ -41,6 +41,7 @@ import { HasilLatihanPage } from '../pages/hasil-latihan/hasil-latihan';
 import { LeaderboardExpPage } from '../pages/leaderboard-exp/leaderboard-exp';
 import { LeaderboardPointPage } from '../pages/leaderboard-point/leaderboard-point';
 import { DataQuestPage } from '../pages/data-quest/data-quest';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { DataQuestPage } from '../pages/data-quest/data-quest';
     HasilLatihanPage,
     LeaderboardExpPage,
     LeaderboardPointPage,
-    DataQuestPage
+    DataQuestPage,
+    EditProfilePage
     
   ],
   imports: [
@@ -108,7 +110,8 @@ import { DataQuestPage } from '../pages/data-quest/data-quest';
     HasilLatihanPage,
     LeaderboardExpPage,
     LeaderboardPointPage,
-    DataQuestPage
+    DataQuestPage,
+    EditProfilePage
     
   ],
   providers: [

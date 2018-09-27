@@ -67,13 +67,7 @@ export class EditClubPage {
       let responseData = JSON.parse(response["_body"]);
       console.log(responseData)
       if(responseData['insert']){
-        // let x = this.AuthService.signup(
-        //   this.SignUpForm.value.first_name, this.SignUpForm.value.last_name,
-        //   this.SignUpForm.value.email, this.SignUpForm.value.no_hp, 
-        //   this.SignUpForm.value.password, ()=>{ console.log("Kepangil")}
-        // );
-        //let x = this.AuthService.signup(this.RegisterForm.value.email, this.RegisterForm.value.password)
-
+        
         this.navCtrl.popTo(ClubPage);
       }
     }, error =>{

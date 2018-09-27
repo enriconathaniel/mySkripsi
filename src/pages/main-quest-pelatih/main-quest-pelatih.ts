@@ -20,6 +20,7 @@ import { DataQuestPage } from '../data-quest/data-quest';
 })
 export class MainQuestPelatihPage {
   questlist:any;
+  doneQuestList:any;
   addQuestPage:any;
   role:any;
   rolevalid:any;
@@ -45,8 +46,15 @@ export class MainQuestPelatihPage {
       let responseData = JSON.parse(response["_body"]);
       if(responseData){
         console.log(JSON.stringify(responseData))
+        this.questlist = responseData.filter(function(e){
+          return e.status == '0';
+        });
+        this.doneQuestList = responseData.filter(function(e){
+          return e.status == '1';
+        });
         
-        this.questlist = responseData;
+        console.log(this.doneQuestList, 'done')
+        //this.questlist = responseData;
         //console.log(this.classInfo);
       }
     }, error =>{
@@ -70,11 +78,18 @@ export class MainQuestPelatihPage {
         },
         error => {},
       );
+      this.webService.post(this.webService.url + "check_main_quest.php", JSON.stringify(req), null).subscribe(response => {
+        //console.log(response["_body"]);
+        let responseData = JSON.parse(response["_body"]);
+      }, error =>{
+      })
 
   }
 
   infoatlet(id) {
     this.navCtrl.push(DataQuestPage, id);
   }
+
+  
 
 }

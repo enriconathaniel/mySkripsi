@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Hasil Latihan</ion-title>
+    <ion-title text-left ><img src="../../assets/imgs/piranhapjg.png"  height="40px"></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -26,11 +26,22 @@
         </div>
       </div>
       <div class="centering" style="flex:3">
-        <div class="gaya">{{list.jarak}}m - Gaya {{list.nama_gaya}}</div>
-        <div class="waktu">
-          <ion-icon name="time"></ion-icon>
-          {{list.waktu}}
-        </div>
+        
+        <ion-row>
+          <ion-col>
+            <div class="gaya">{{list.jarak}}m - Gaya {{list.nama_gaya}}</div>
+            <div class="waktu">
+              <ion-icon name="time"></ion-icon>
+              {{list.waktu}}
+            </div>
+          </ion-col>
+          <ion-col col-3>
+            <button outline ion-button text-right (click)="onDelete(list.id)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+
       </div>
     </div>
 

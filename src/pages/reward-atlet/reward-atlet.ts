@@ -214,9 +214,6 @@ export class RewardAtletPage {
     });
     alert.present();
     
-
-
-
   }
 
   presentConfirm() {

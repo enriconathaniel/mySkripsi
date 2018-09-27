@@ -6,6 +6,7 @@ import {WebService} from '../../service/WebService';
 import {AuthService} from '../../service/AuthService';
 import {HomePage} from '../home/home';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { EditProfilePage } from '../edit-profile/edit-profile';
 /**
  * Generated class for the ProfilAtletPage page.
  *
@@ -53,6 +54,10 @@ export class ProfilAtletPage {
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfilAtletPage');
+    
+  }
+  ionViewWillEnter(){
     let req = {
       id: this.authService.id,
     };
@@ -86,6 +91,10 @@ export class ProfilAtletPage {
       //set root
       this.app.getRootNav().setRoot(HomePage);
     });
+  }
+
+  edit(){
+    this.navCtrl.push(EditProfilePage);
   }
 
   presentLoading(){

@@ -9,15 +9,28 @@
 
 
 </ion-header>
-
-
 <ion-content>
   <div class="card" *ngFor="let list of questlist">
     <div class="list card-1">
-      <h2>
+      <!-- <h2>
          {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
       </h2>
       <h3>Target Waktu: {{list.quest_waktu_target}}</h3>
+       -->
+
+      <ion-row>
+        <ion-col>
+          <h2>
+            {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
+          </h2>
+          <h3>Target Waktu: {{list.quest_waktu_target}}</h3>
+        </ion-col>
+        <ion-col col-2>
+          <button outline ion-button text-right (click)="onDelete(list.id)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
       <div class="rowed">
         <div>
           <p>Reward Point : <span class="small-font">{{list.point}}</span></p>
@@ -28,6 +41,22 @@
       </div>
     </div>
   </div>
+  <div class="card" *ngFor="let list of doneQuestList">
+      <div class="list card-2">
+        <h2>
+           {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
+        </h2>
+        <h3>Target Waktu: {{list.quest_waktu_target}}</h3>
+        <div class="rowed">
+          <div>
+            <p>Reward Point : <span class="small-font">{{list.point}}</span></p>
+          </div>
+          <div>
+            <p>Reward EXP : <span class="small-font">{{list.exp}}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
   <ion-item no-lines>
       <button round outline ion-button color="primary" block navPop>Back</button>
 

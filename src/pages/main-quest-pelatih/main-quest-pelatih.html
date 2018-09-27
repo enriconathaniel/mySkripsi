@@ -14,7 +14,7 @@
   <ion-content>
     <div *ngIf="!rolevalid">
       <div class="card-11" *ngFor="let list of questlist">
-          <div class="list-1 card-1">
+        <div class="list-1 card-1">
             <h2>
                 {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
             </h2>
@@ -27,9 +27,27 @@
                 <p>Reward EXP : <span class="small-font">{{list.exp}}</span></p>
               </div>
             </div>
-          </div>
         </div>
-  </div>
+      </div>
+    </div>
+    <div *ngIf="!rolevalid">
+      <div class="card-11" *ngFor="let list of doneQuestList">
+        <div class="list-1 card-2">
+            <h2>
+                {{list.gaya_renang_jarak}}m {{list.gaya_renang_nama}}
+            </h2>
+            <h3>Target Waktu: {{list.quest_waktu_target}}</h3>
+            <div class="rowed">
+              <div>
+                <p>Reward Point : <span class="small-font">{{list.point}}</span></p>
+              </div>
+              <div>
+                <p>Reward EXP : <span class="small-font">{{list.exp}}</span></p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
     <div *ngIf="rolevalid">
         <div class="card" *ngFor="let atlet of userlist index as i">

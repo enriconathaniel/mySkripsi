@@ -7,10 +7,10 @@
 <ion-header>
 
     <ion-navbar>
-      <ion-title>Reward</ion-title>
+      <ion-title text-left ><img src="../../assets/imgs/piranhapjg.png"  height="40px"></ion-title>
   
       <ion-buttons *ngIf="!rolevalid" end>
-        <button ion-button icon-only [navPush]="historyreward">
+        <button ion-button icon-start clear item-end [navPush]="historyreward">
           <ion-icon name="clock"></ion-icon>
         </button>
       </ion-buttons>
@@ -54,7 +54,7 @@
                     </div>
                   </div>
                   <div class="centering" style="flex:1" >
-                    <button color="light" *ngIf="rolevalid" outline ion-button icon-start clear item-end (click)="onDelete(item.id)">
+                    <button color="light" *ngIf="rolevalid" ion-button icon-start clear item-end (click)="onDelete(item.id)">
                       <ion-icon name="trash"></ion-icon>
                     </button>
                   </div>

@@ -4,6 +4,9 @@ import {AuthService} from '../../service/AuthService';
 import {WebService} from '../../service/WebService';
 import {Http} from '../../../node_modules/@angular/http';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { HistoryAtletPage } from '../history-atlet/history-atlet';
+import { AlertCmp } from 'ionic-angular/components/alert/alert-component';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 /**
  * Generated class for the HasilLatihanPage page.
@@ -28,7 +31,8 @@ export class HasilLatihanPage {
     public http: Http,
     public webService: WebService,
     public authService: AuthService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) {}
 
   ionViewDidLoad() {
@@ -103,6 +107,48 @@ export class HasilLatihanPage {
         error => {},
       );
       this.dismissLoading();
+  }
+
+  onDelete(id_history){
+    let req = {
+      'id' : id_history
+    }
+
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Delete',
+      message: 'Yakin anda akan menghapus data ini?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Hapus',
+          handler: () => {
+            
+            console.log(req);
+            this.webService.post(this.webService.url + "delete_hasil_latihan.php", JSON.stringify(req), null).subscribe(response => {
+              //console.log(response["_body"]);
+              let responseData = JSON.parse(response["_body"]);
+              if(responseData['success']){
+                console.log("cek hapus")
+              
+                this.navCtrl.popTo(HistoryAtletPage);
+                //console.log(this.classInfo);
+              }
+            }, error =>{
+            })
+
+          }
+        }
+      ]
+    });
+    alert.present();
+    
   }
 
   presentLoading(){
